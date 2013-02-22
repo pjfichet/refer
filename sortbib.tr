@@ -1,0 +1,176 @@
+.\" Sortref manual page
+.ig
+Copyright (c) 1983 Regents of the University of California.
+All rights reserved.
+
+This code contains changes by
+ Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved.
+ Pierre-Jean Fichet, Amiens, France, 2012. All rights reserved
+Conditions 1, 2, and 4 and the no-warranty notice below apply
+to these changes.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowedgement:
+	This product includes software developed by the University of
+	California, Berkeley and its contributors.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
+Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+    Redistributions of source code and documentation must retain the
+    above copyright notice, this list of conditions and the following
+    disclaimer.
+    Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+    All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+    This product includes software developed or owned by Caldera
+    International, Inc.
+    Neither the name of Caldera International, Inc. nor the names of
+    other contributors may be used to endorse or promote products
+    derived from this software without specific prior written permission.
+
+USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA
+INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE
+LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
+from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
+
+$Id$
+..
+.
+.
+.
+.ie \n[pdf] .H2 Sortref manual
+.el .H2 SORTREF
+.
+.
+.
+.H3 NAME
+.PP
+\*Bsortref\*R \- Sort bibliographic database following iso-690 standart
+.
+.
+.
+.H3 SYNOPSIS
+.PP
+\*Isortref\*R [\*B\-i\*R|\*B\-s\*IKEYS\*R] \*Idatabase\*R ...
+.
+.
+.
+.H3 DESCRIPTION
+.PP
+\*ISortref\*R sorts files of records containing \*Irefer\*R
+key-letters by user-specified keys. Records may be separated
+by blank lines, or by \*B\&.[\*R and \*B\&.]\*R delimiters,
+but the two styles may not be mixed together. This program
+reads through each \*Idatabase\*R and pulls out key fields,
+which are sorted separately. The sorted key fields contain
+the file pointer, byte offset, and length of corresponding
+records. These records are delivered using disk seeks and
+reads, so \*Isortref\*R may not be used in a pipeline to
+read standard input.
+.PP
+By default, \*Isortref\*R alphabetize the first \*B%A\*R and
+\*B%D\*R fields, which contain the senior author and date.
+.PP
+The \*B-i\*R option is used to sort database following an
+algorythm which aims to respect the \*Iiso-690\*R
+bibliography standart:
+.PI
+If \*BJ\*R is defined, the order of fields is:
+\*BQA+TE+SVBJ\*R.
+.PI
+Else, if \*BB\*R is defined, the order of fields is:
+\*BQA+TE+SVB\*R.
+.PI
+Else, the order of fields is: \*BQA+E+SVT\*R.
+.PP
+The \*B\-s\*R option is used to specify new \*IKEYS\*R. For
+instance, \*B\-sATD\*R will sort by author, title, and
+date, while \*B\-sA+D\*R will sort by all authors, and
+date. Sort keys past the fourth are not meaningful. No
+more than 16 databases may be sorted together at one time.
+Records longer than 4096 characters will be truncated.
+.PP
+\*ISortref\*R sorts on last word on the \*B%A\*R and
+\*B%E\*R line, which are assumed to be the author's and
+editor's last name.  A word in the final position, such as
+``jr.'' or ``ed.'', will be ignored if the name beforehand
+ends with a comma.  Authors with two-word last names or
+unusual constructions can be sorted correctly by using the
+\*Inroff\*R convention ``\*B\*e0\*R'' in place of a blank.
+A \*B%Q\*R field is considered to be the same as \*B%A\*R,
+except sorting begins with the first, not the last, word.
+\*ISortref\*R sorts on the last word of the \*B%D\*R line,
+usually the year.
+.ig
+It also ignores leading articles (like ``A'' or ``The'')
+when sorting by titles in the %T or %J fields;
+it will ignore articles of any modern European language.
+..
+If a sort-significant field is absent from a record,
+\*Isortref\*R places that record before other records
+containing that field.
+.
+.
+.
+.H3 LICENSE
+.PP
+\*ISortref\*R is distributed under the CDDL1.0 License.
+This manual page is distributed under a four clause BSD
+License.
+.
+.
+.H3 FILES
+.PP
+\*I@BINDIR@/sortref\*R
+.
+.
+.H3 SEE ALSO
+.PP
+refer(1B), addbib(1B), roffbib(1B), indxbib(1B),
+lookbib(1B), iso690(7)
+.
+.
+.H3 AUTHORS
+.PP
+Written by Greg Shenaut & Bill Tuthill. Modified by
+Pierre-Jean Fichet.
