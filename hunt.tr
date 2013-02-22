@@ -1,0 +1,142 @@
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.H2 hunt
+.
+.
+.H3 NAME
+.PP
+\*Ihunt\*R \(em Retrieve items from an \*Imkey\*R index.
+.H3 SYNOPSIS
+.PP
+\*Ihunt\*R [\*B-agp\*R]
+[\*B-C\*R\*In\*R]
+[\*B-F\*R[\*Iynd\*R]]
+[\*B-i\*R \*Istring\*R]
+[\*B-l\*R \*In\*R]
+[\*B-o\*R \*Istring\*R]
+[\*B-T\*R[\*Iynd\*R]]
+[\*B-t\*R \*Istring\*R] < \*Ifile\*R
+.H3 DESCRIPTION
+.PP
+The \*Ihunt\*R program retrieves items from an index. It
+combines, as mentioned above, the two parts of that process:
+search and delivery. The reason why it is efficient to
+combine delivery and search is partly to avoid starting
+unnecessary processes, and partly because the delivery
+operation must be a part of the search operation in any
+case. Because of the hashing, the search part takes place in
+two stages: first items are retrieved which have the right
+hash codes associated with them, and then the actual items
+are inspected to determine false drops, i.e. to determine if
+anything with the right hash codes doesn’t really have the
+right keys. Since the original item is retrieved to check on
+false drops, it is efficient to present it immediately,
+rather than only giving the tag as output and later
+retrieving the item again. If there were a separate key
+file, this argument would not apply, but separate key files
+are not common.
+.PP
+Input to \*Ihunt\*R is taken from the standard input, one
+query per line. Each query should be in \*Imkey\*R \*B-s\*R
+output format; all lower case, no punctuation. The
+\*Ihunt\*R program takes one argument which specifies the
+base name of the index files to be searched. Only one set of
+index files can be searched at a time, although many text
+files may be indexed as a group, of course. If one of the
+text files has been changed since the index, that file is
+searched with fgrep; this may occasionally slow down the
+searching, and care should be taken to avoid having many out
+of date files.
+.PP
+The following option arguments are recognized by \*Ihunt\*R:
+.PI \*B-a\*R
+Give all output; ignore checking for false drops.
+.PI \*B-C\*R\*In\*R
+Coordination level \*In\*R; retrieve items with not more
+than \*In\*R terms of the input missing; default
+\*B-C\*I0\*R , implying that each search term must be in the
+output items.
+.PI \*B-F\*R[\*Iynd\*R]
+‘\*B-F\*Iy\*R’ gives the text of all the items found;
+‘\*B-F\*In\*R’’ suppresses them.
+‘\*B-F\*Id\*R’ where \*Id\*R is an integer gives the text of
+the first \*Id\*R items.
+The default is \*B-F\*Iy\*R.
+.PI \*B-g\*R
+Do not use \*Ifgrep\*R to search files changed since the
+index was made; print an error comment instead.
+.PI "\*B-i\*R \*Istring\*R
+Take \*Istring\*R as input, instead of reading the standard input.
+.PI "\*B-l\*R \*In\*R"
+The maximum length of internal lists of candidate items is
+\*In\*R; default is 1000.
+.PI "\*B-o\*R \*Istring\*R"
+Put text output (‘\*BF\*Iy\*R’) in \*Istring\*R; of use only
+when invoked from another program.
+.PI \*B-p\*R
+Print hash code frequencies; mostly for use in optimizing
+hash table sizes.
+.PI \*B-T\*R[\*Iynd\*R]
+‘\*B-T\*Iy\*R’ gives the tags of the items found;
+‘\*B-T\*In\*R’ suppresses them.
+‘\*B-T\*Id\*R’ where \*Id\*R is an integer gives the first
+\*Id\*R tags.
+The default is \*B-T\*In\*R.
+.PI "\*B-t\*R \*Istring\*R"
+Put tag output (‘\*B-T\*Iy\*R’) in string; of use only when
+invoked from another program.
+.PP
+The timing of \*Ihunt\*R is complex. Normally the hash table is
+overfull, so that there will be many false drops on any
+single term; but a multi-term query will have few false
+drops on all terms. Thus if a query is underspecified (one
+search term) many potential items will be examined and
+discarded as false drops, wasting time. If the query is
+overspecified (a dozen search terms) many keys will be
+examined only to verify that the single item under
+consideration has that key posted.
+.PP
+As would be expected, the optimal search is achieved when
+the query just specifies the answer; however,
+overspecification is quite cheap. In general,
+overspecification can be recommended; it protects the user
+against additions to the data base which turn previously
+uniquely-answered queries into ambiguous queries.
+.H3 FILES
+.PP
+\*I@BINDIR@/hunt\*R	Executable.
+.H3 LICENSE
+.PP
+The text of this manual page comes from \*ISome application
+of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
+which is distributed under the original BSD license. The
+software \*Ihunt\*R is distributed under the CDDL-1.0
+license.
+.H3 SEE ALSO
+.PP
+refer(1), referformat(1), addbib(1), sortbib(1), roffbib(1),
+indxbib(1), lookbib(1), mkey(1), inv(1),
+and \*ISome application of Inverted Indexes in the UNIX
+System\*R by M. E. Lesk.
+.H3 AUTHORS
+.PP
+M. E. Lesk.
