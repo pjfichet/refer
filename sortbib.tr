@@ -73,7 +73,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id$
+$Id: man.sortref.tr,v 1.1 2013/02/22 17:14:49 pj Exp pj $
 ..
 .
 .
@@ -91,7 +91,7 @@ $Id$
 .
 .H3 SYNOPSIS
 .PP
-\*Isortref\*R [\*B\-i\*R|\*B\-s\*IKEYS\*R] \*Idatabase\*R ...
+\*Isortref\*R [\*B\-i\*R|\*B\-s\*R\*IKEYS\*R] \*Idatabase\*R ...
 .
 .
 .
