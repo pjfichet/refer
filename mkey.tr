@@ -33,7 +33,7 @@
 [\*B-i\*R \*Ichars\*R]
 [\*B-k\*R\*In\*R]
 [\*B-l\*R\*In\*R]
-[\*R-n\*R\*Im\*R]
+[\*B-n\*R\*Im\*R]
 \*Ifile\*R [\*Ifile...\*R]
 .H3 DESCRIPTION
 .PP
@@ -67,7 +67,7 @@ its input.
 .PI "\*B-l\*R\*In\*R"
 Ignore items shorter than \*In\*R letter longs. Default is
 3.
-.PI "\*R-n\*R\*Im\*R"
+.PI "\*B-n\*R\*Im\*R"
 Ignore as a key any word in the first \*Im\*R words of the
 list of common English words. The default is 100.
 .PI "\*B-s\*R

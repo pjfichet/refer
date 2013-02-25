@@ -73,14 +73,14 @@ Give all output; ignore checking for false drops.
 .PI \*B-C\*R\*In\*R
 Coordination level \*In\*R; retrieve items with not more
 than \*In\*R terms of the input missing; default
-\*B-C\*I0\*R , implying that each search term must be in the
+\*B-C\*R\*I0\*R , implying that each search term must be in the
 output items.
 .PI \*B-F\*R[\*Iynd\*R]
-‘\*B-F\*Iy\*R’ gives the text of all the items found;
-‘\*B-F\*In\*R’’ suppresses them.
-‘\*B-F\*Id\*R’ where \*Id\*R is an integer gives the text of
+‘\*B-F\*R\*Iy\*R’ gives the text of all the items found;
+‘\*B-F\*R\*In\*R’’ suppresses them.
+‘\*B-F\*R\*Id\*R’ where \*Id\*R is an integer gives the text of
 the first \*Id\*R items.
-The default is \*B-F\*Iy\*R.
+The default is \*B-F\*R\*Iy\*R.
 .PI \*B-g\*R
 Do not use \*Ifgrep\*R to search files changed since the
 index was made; print an error comment instead.
@@ -90,19 +90,19 @@ Take \*Istring\*R as input, instead of reading the standard input.
 The maximum length of internal lists of candidate items is
 \*In\*R; default is 1000.
 .PI "\*B-o\*R \*Istring\*R"
-Put text output (‘\*BF\*Iy\*R’) in \*Istring\*R; of use only
+Put text output (‘\*BF\*R\*Iy\*R’) in \*Istring\*R; of use only
 when invoked from another program.
 .PI \*B-p\*R
 Print hash code frequencies; mostly for use in optimizing
 hash table sizes.
 .PI \*B-T\*R[\*Iynd\*R]
-‘\*B-T\*Iy\*R’ gives the tags of the items found;
-‘\*B-T\*In\*R’ suppresses them.
-‘\*B-T\*Id\*R’ where \*Id\*R is an integer gives the first
+‘\*B-T\*R\*Iy\*R’ gives the tags of the items found;
+‘\*B-T\*R\*In\*R’ suppresses them.
+‘\*B-T\*R\*Id\*R’ where \*Id\*R is an integer gives the first
 \*Id\*R tags.
-The default is \*B-T\*In\*R.
+The default is \*B-T\*R\*In\*R.
 .PI "\*B-t\*R \*Istring\*R"
-Put tag output (‘\*B-T\*Iy\*R’) in string; of use only when
+Put tag output (‘\*B-T\*R\*Iy\*R’) in string; of use only when
 invoked from another program.
 .PP
 The timing of \*Ihunt\*R is complex. Normally the hash table is
