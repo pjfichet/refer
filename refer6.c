@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer6.c,v 0.5 2013/03/12 20:54:14 pj Exp pj $
+ * $Id: refer6.c,v 0.6 2013/03/12 20:58:27 pj Exp pj $
  */
 
 #include "refer..c"
@@ -272,7 +272,6 @@ newcaps(char *s, char*b)
 	if (p < name) {
 		/* begin firstname */
 		*b++ = '\\';
-		*b++ = '\\';
 		*b++ = '*';
 		*b++ = '(';
 		*b++ = '+';
@@ -280,7 +279,6 @@ newcaps(char *s, char*b)
 		while (p < name)
 			*b++ = *p++;
 		/* end firstname */
-		*b++ = '\\';
 		*b++ = '\\';
 		*b++ = '*';
 		*b++ = '(';
@@ -290,7 +288,6 @@ newcaps(char *s, char*b)
 	}
 	/* Begin Lastname */
 	*b++ = '\\';
-	*b++ = '\\';
 	*b++ = '*';
 	*b++ = '(';
 	*b++ = '+';
@@ -298,7 +295,6 @@ newcaps(char *s, char*b)
 	while (p < jr)
 		*b++ = *p++;
 	/* end lastname */
-	*b++ = '\\';
 	*b++ = '\\';
 	*b++ = '*';
 	*b++ = '(';
@@ -309,7 +305,6 @@ newcaps(char *s, char*b)
 		*b++ = *jr++; // space
 		/* begin junior */
 		*b++ = '\\';
-		*b++ = '\\';
 		*b++ = '*';
 		*b++ = '(';
 		*b++ = '+';
@@ -317,7 +312,6 @@ newcaps(char *s, char*b)
 		while(*jr)
 			*b++ = *jr++;
 		/* end junior */
-		*b++ = '\\';
 		*b++ = '\\';
 		*b++ = '*';
 		*b++ = '(';
