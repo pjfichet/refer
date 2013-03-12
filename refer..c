@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: refer..c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include <stdio.h>
@@ -50,7 +50,7 @@
 #define MXSIG 200		/* max bytes in aggregate signal */
 
 extern FILE *in;
-extern int endpush, sort, labels, keywant, bare;
+extern int endpush, sort, isosort, labels, keywant, bare;
 extern int biblio, science, postpunct;
 extern char *smallcaps;
 extern char *comname;
@@ -155,6 +155,8 @@ char *trimnl(char *);
 void putsig(int, char **, int, char *, char *, int);
 char *fpar(int, char **, char *, int, int, int);
 void putkey(int, char **, int, char *);
+char *isofpar(int, char **, char *, int, int, int);
+void isoputkey(int, char **, int, char *);
 void tokeytab(const char *, int);
 int keylet(char *, int);
 void mycpy(char *, const char *);

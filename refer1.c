@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: refer1.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include <signal.h>
@@ -57,6 +57,11 @@ main(int argc,char **argv)		/* process command-line arguments */
 			endpush = 1;
 			if (argv[1][2])
 				keystr = argv[1]+2;
+			break;
+		case 'i':
+			isosort++;
+			sort++;
+			endpush=1;
 			break;
 		case 'l': 
 			labels++;

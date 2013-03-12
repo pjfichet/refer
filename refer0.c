@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: refer0.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include "refer..c"
@@ -34,6 +34,7 @@ FILE *fo /*= stdout*/;
 FILE *ftemp /*= stdout*/;
 int endpush = 0;
 int sort = 0;
+int isosort = 0;
 int labels = 0;
 int keywant = 0;
 int bare = 0;

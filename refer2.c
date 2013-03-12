@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: refer2.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include "refer..c"
@@ -155,7 +155,9 @@ doref(char *line1)
 	nf += tabs(flds+nf, dbuff);
 	assert(nf < NFLD);
 	refnum++;
-	if (sort)
+	if (isosort)
+		isoputkey(nf, flds, refnum, keystr);
+	else if (sort)
 		putkey(nf, flds, refnum, keystr);
 	if (bare < 2)
 		putsig(nf, flds, refnum, line1, line, 1);

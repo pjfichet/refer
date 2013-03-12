@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: refer5.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include <string.h>
@@ -263,6 +263,70 @@ putkey(int nf, char **flds, int nref, char *keystr)
 	}
 }
 
+char *
+isofpar (int nf, char **flds, char *out, int c, int seq, int prepend)
+{
+	char *p, *s;
+	int i, fnd = 0;
+
+	for(i = 0; i < nf; i++)
+		if (flds[i][1] == c && ++fnd >= seq) {
+			s = p = flds[i]+2;
+			if (c == 'A' || c == 'E')  {
+			    for(; *p; p++);
+			    while (p > s && *p != ' ')
+				    p--;
+				if (p[-1] == ',' || p[1] =='(') {
+					p--;
+					while (p > s && *p != ' ')
+						p--;
+				}
+				mycpy(out, p+1);
+			}
+			else
+				mycpy2(out, p+1, 40);
+			if ((c == 'A' || c == 'E') && prepend)
+				initadd(out, flds[i]+2, p);
+			return(out);
+		}
+	return(0);
+}
+
+void
+isoputkey(int nf, char **flds, int nref, char *keystr)
+{
+	// isosort (-i option): sort following iso-690 standart
+
+	char t1[50], *sf;
+	int ctype, i, count;
+
+	fprintf(fo, ".\\\"");
+	if (nf <= 0)
+		fprintf(fo, "%s%c%c", labtab[nref], labc[nref], sep);
+	else {
+		keystr = "QA+E+SVT"; // default
+		for(i = 0; i < nf; i++) {
+			if (flds[i][1] == 'J')
+				keystr = "QA+TSVJ"; // journal
+			if (flds[i][1] == 'B')
+				keystr = "QA+TE+SVB"; // inbook
+		}
+		while (ctype = *keystr++) {
+			count = atoi(keystr);
+			if (*keystr=='+')
+				count=999;
+			if (count <= 0)
+				count = 1;
+			for(i = 1; i <= count; i++) {
+				sf = isofpar(nf, flds, t1, ctype, i, 1);
+				if (sf == 0)
+					break;
+				fprintf(fo, "%s%c", sf, '-');
+			}
+		}
+		fprintf(fo, "%c%d%c%c", FLAG, nref, FLAG, sep);
+	}
+}
 
 void
 tokeytab (const char *t, int nref)
