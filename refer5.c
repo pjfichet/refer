@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer5.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: refer5.c,v 0.3 2013/03/12 18:03:02 pj Exp pj $
  */
 
 #include <string.h>
@@ -368,13 +368,16 @@ mycpy(char *s, const char *t)
 void
 mycpy2(char *s, const char *t, int n)
 {
-	int c;
-
-	while (n-- && (c= *t++) > 0) {
+	char c;
+	n -= 3;
+	while (n-- && (c= *t++) != 0) {
 		if (c == ' ')
 			c = '-';
 		*s++ = c;
 	}
+	/* don't truncate utf8 char */
+	while ( *t && ( *t & 0xc0 ) == 0x80 )
+		*s++ = *t++;
 	*s = 0;
 }
 
