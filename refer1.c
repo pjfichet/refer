@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer1.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: refer1.c,v 0.3 2013/03/12 18:02:48 pj Exp pj $
  */
 
 #include <signal.h>
@@ -96,6 +96,9 @@ main(int argc,char **argv)		/* process command-line arguments */
 			break;
 		case 'c':
 			smallcaps = argv[1]+2;
+			break;
+		case 'd':
+			newsmallcaps = argv[1]+2;
 			break;
 		case 'f':
 			refnum = atoi(argv[1]+2) - 1;

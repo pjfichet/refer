@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer0.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: refer0.c,v 0.3 2013/03/12 18:02:41 pj Exp pj $
  */
 
 #include "refer..c"
@@ -43,6 +43,7 @@ int science = 0;
 int postpunct = 0;
 int authrev = 0;
 char *smallcaps = "";
+char *newsmallcaps = "";
 char *keystr = "AD";
 char *convert = "X.AP";
 int nmlen = 0, dtlen = 0;

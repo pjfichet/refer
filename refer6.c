@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: refer6.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include "refer..c"
@@ -67,6 +67,8 @@ putref(int n, char **tvec)
 #endif
 		if (mindex(smallcaps, cch))
 			tx = caps(tx, buf1);
+		if (mindex(newsmallcaps, cch))
+			tx = newcaps(tx, buf1);
 #if EBUG
 		fprintf(stderr, " s %o tx %o %s\n",s,tx,tx);
 #endif
@@ -181,6 +183,7 @@ hastype (int nt, char **tv, int c)
 char *
 caps(char *a, char *b)
 {
+	/* capitalize all words using font size */
 	char *p;
 	int c, alph, this;
 
@@ -213,6 +216,85 @@ caps(char *a, char *b)
 	}
 	*b = 0;
 	return(p);
+}
+
+char *
+newcaps(char *s, char*b)
+{
+	/* capitalize separately words using strings */
+	char *init, *name, *jr, *p, *bcop;
+
+	bcop = b;
+	init = name = s;
+	while (*name)
+		name++;
+	jr = name;
+	while (name > init && *name!= ' ')
+		name--;
+	if (name[-1] == ',' || name[-1]== '(' ) {
+		jr = --name;
+		while (name>init && *name != ' ')
+			name--;
+	}
+	p = init;
+	*b++ = *p++; // first space
+	if (p < name) {
+		/* begin firstname */
+		*b++ = '\\';
+		*b++ = '\\';
+		*b++ = '*';
+		*b++ = '(';
+		*b++ = '+';
+		*b++ = 'F';
+		while (p < name)
+			*b++ = *p++;
+		/* end firstname */
+		*b++ = '\\';
+		*b++ = '\\';
+		*b++ = '*';
+		*b++ = '(';
+		*b++ = '-';
+		*b++ = 'F';
+		*b++ = *p++; //last space
+	}
+	/* Begin Lastname */
+	*b++ = '\\';
+	*b++ = '\\';
+	*b++ = '*';
+	*b++ = '(';
+	*b++ = '+';
+	*b++ = 'L';
+	while (p < jr)
+		*b++ = *p++;
+	/* end lastname */
+	*b++ = '\\';
+	*b++ = '\\';
+	*b++ = '*';
+	*b++ = '(';
+	*b++ = '+';
+	*b++ = 'L';
+	if (*jr) {
+		*b++ = *jr++; // coma
+		*b++ = *jr++; // space
+		/* begin junior */
+		*b++ = '\\';
+		*b++ = '\\';
+		*b++ = '*';
+		*b++ = '(';
+		*b++ = '+';
+		*b++ = 'J';
+		while(*jr)
+			*b++ = *jr++;
+		/* end junior */
+		*b++ = '\\';
+		*b++ = '\\';
+		*b++ = '*';
+		*b++ = '(';
+		*b++ = '-';
+		*b++ = 'J';
+	}
+	*b++ = 0;
+	return(bcop);
 }
 
 char *

@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer..c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: refer..c,v 0.3 2013/03/12 18:03:08 pj Exp pj $
  */
 
 #include <stdio.h>
@@ -53,6 +53,7 @@ extern FILE *in;
 extern int endpush, sort, isosort, labels, keywant, bare;
 extern int biblio, science, postpunct;
 extern char *smallcaps;
+extern char *newsmallcaps;
 extern char *comname;
 extern char *keystr;
 extern char *convert;
