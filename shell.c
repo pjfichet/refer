@@ -18,7 +18,13 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)shell.c	1.4 (gritter) 12/25/06
+ * From Heirloom project "shell.c	1.4 (gritter) 12/25/06"
+ */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
  */
 
 /*

@@ -18,7 +18,13 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)hunt8.c	1.4 (gritter) 01/12/07
+ * From Heirloom project "hunt8.c	1.4 (gritter) 01/12/07"
+ */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
  */
 
 #include <locale.h>

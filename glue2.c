@@ -18,8 +18,15 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)glue2.c	1.3 (gritter) 10/22/05
+ * From Heirloom project "glue2.c	1.3 (gritter) 10/22/05"
  */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
+ */
+
 
 #include <unistd.h>
 #include "refer..c"

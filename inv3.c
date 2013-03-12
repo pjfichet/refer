@@ -18,8 +18,15 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)inv3.c	1.3 (gritter) 10/22/05
+ * From Heirloom project "inv3.c	1.3 (gritter) 10/22/05"
  */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
+ */
+
 
 int
 getargs(char *s, char **arps)

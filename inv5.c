@@ -18,8 +18,15 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)inv5.c	1.5 (gritter) 12/25/06
+ * From Heirloom project "inv5.c	1.5 (gritter) 12/25/06"
  */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
+ */
+
 
 #include <stdio.h>
 #include <locale.h>

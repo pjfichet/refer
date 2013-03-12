@@ -18,7 +18,13 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)refer2.c	1.4 (gritter) 9/7/08
+ * From Heirloom project "refer2.c	1.4 (gritter) 9/7/08"
+ */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
  */
 
 #include "refer..c"

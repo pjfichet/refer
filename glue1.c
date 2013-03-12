@@ -19,8 +19,15 @@
 /*
  * Portions Copyright (c) 2005 Gunnar Ritter, Freiburg i. Br., Germany
  *
- * Sccsid @(#)glue1.c	1.4 (gritter) 9/7/08
+ * From Heirloom project "glue1.c	1.4 (gritter) 9/7/08"
  */
+
+/*
+ * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
+ *
+ * $Id$
+ */
+
 
 #include <stdio.h>
 #include <inttypes.h>
