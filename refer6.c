@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer6.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: refer6.c,v 0.3 2013/03/12 18:28:16 pj Exp pj $
  */
 
 #include "refer..c"
@@ -36,8 +36,8 @@ putref(int n, char **tvec)
 {
 	char *s, *tx;
 	char buf1[BUFSIZ], buf2[50];
-	int nauth = 0, i, lastype = 0, cch, macro = 0, la;
-	int lauth = 0, ltitle = 0, lother = 0;
+	int nauth = 0, nedit = 0, i, lastype = 0, cch, macro = 0, la, le;
+	int lauth = 0, ledit = 0, ltitle = 0, lother = 0;
 
 	fprintf(fo, ".]-%c", sep);
 	for (i = 0; i < n; i++) {
@@ -113,11 +113,37 @@ putref(int n, char **tvec)
 				lauth = last(tx) == '.';
 			}
 			else {
-				if (macro)
-					fprintf(fo,
-						".de [%c%c%s%c",cch,sep,tx,sep);
-				else
-					fprintf(fo, ".ds [%c%s%c",cch,tx, sep);
+				if (cch == 'E') {
+					if (nedit < authrev)
+						tx = revauth(tx, buf2);
+					if (nedit++ == 0) {
+						if (macro)
+							fprintf(fo,
+							".de [%c%c%s%c",cch,sep,tx,sep);
+						else
+							fprintf(fo,
+							".ds [%c%s%c", cch,tx,sep);
+						ledit = 0;
+					}
+					else {
+						le = (tvec[i+1][1]!='E');
+						fprintf(fo, ".as [E \"");
+						if (le == 0 || nedit != 2)
+							fprintf(fo, ",");
+						if (le)
+							fprintf(fo,"%s", 
+							mindex(smallcaps, 'E') ? " \\s-2AND\\s+2" : " and");
+						fprintf(fo, "%s%c", tx, sep);
+						ledit = 1;
+					}
+				}
+				else {
+					if (macro)
+						fprintf(fo,
+							".de [%c%c%s%c",cch,sep,tx,sep);
+					else
+						fprintf(fo, ".ds [%c%s%c",cch,tx, sep);
+				}
 			}
 		}
 		if (cch == 'P')
@@ -132,6 +158,7 @@ putref(int n, char **tvec)
 		fprintf(fo, "..%c", sep);
 	fprintf(fo, ".nr [T %d%c", ltitle, sep);
 	fprintf(fo, ".nr [A %d%c", lauth, sep);
+	fprintf(fo, ".nr [E %d%c", ledit, sep);
 	fprintf(fo, ".nr [O %d%c", lother, sep);
 	fprintf(fo, ".][ %s%c", class(n, tvec), '\n');
 }

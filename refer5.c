@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer5.c,v 0.3 2013/03/12 18:03:02 pj Exp pj $
+ * $Id: refer5.c,v 0.4 2013/03/12 18:32:35 pj Exp pj $
  */
 
 #include <string.h>
@@ -83,6 +83,7 @@ putsig (int nf, char **flds, int nref, char *nstline,
 				}
 				t1[0] = 0;
 				fpar(nf, flds, t1, 'A', 1, 0);
+				fpar(nf, flds, t1, 'E', 1, 0);
 				sprintf(t, format, t1, sd);
 			}
 			if (keywant) {
@@ -219,8 +220,8 @@ fpar (int nf, char **flds, char *out, int c, int seq, int prepend)
 			    while (p > s && *p != ' ')
 				    p--;
 			}
-			/* special wart for authors */
-			if (c == 'A' && (p[-1] == ',' || p[1] =='(')) {
+			/* special wart for authors and editors */
+			if ((c == 'A' || c == 'E') && (p[-1] == ',' || p[1] =='(')) {
 				p--;
 				while (p > s && *p != ' ')
 					p--;
@@ -228,7 +229,7 @@ fpar (int nf, char **flds, char *out, int c, int seq, int prepend)
 			}
 			else
 				strcpy(out, p+1);
-			if (c == 'A' && prepend)
+			if ((c == 'A' || c == 'E') && prepend)
 				initadd(out, flds[i]+2, p);
 			return(out);
 		}
