@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer6.c,v 0.4 2013/03/12 20:32:54 pj Exp pj $
+ * $Id: refer6.c,v 0.5 2013/03/12 20:54:14 pj Exp pj $
  */
 
 #include "refer..c"
@@ -348,7 +348,8 @@ revauth(char *s, char *b)
 	p = name;
 	while (p < jr)
 		*b++ = *p++;
-	*b++ = ',';
+	if (init < name)
+		*b++ = ',';
 	while (init < name)
 		*b++ = *init++;
 	if (*jr)
