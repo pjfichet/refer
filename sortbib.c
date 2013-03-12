@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: sortbib.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 #include <locale.h>
@@ -42,6 +42,7 @@ int tmpfd = -1;
 char *keystr = "AD";		/* default sorting on author and date */
 int multauth = 0;		/* by default sort on senior author only */
 int oneauth;			/* has there been author in the record? */
+int isosort = 0;		/* Default sort don't follow iso-690 standart */
 
 static void sortbib(FILE *, FILE *, int);
 static void deliver(FILE **, FILE *);
@@ -60,16 +61,23 @@ main(int argc, char **argv)	/* sortbib: sort bibliographic database in place */
 
 	if (argc == 1)		/* can't use stdin for seeking anyway */
 	{
-		puts("Usage:  sortbib [-sKEYS] database [...]\n\
+		puts("Usage:  sortbib [-i|-sKEYS] database [...]\n\
+\t-i: sort following iso-690 bibliography standart\n\
 \t-s: sort by fields in KEYS (default is AD)");
 		exit(1);
 	}
-	if (argc > 2 && argv[1][0] == '-' && argv[1][1] == 's')
-	{
+	if (argc > 2 && argv[1][0] == '-' ) {
+		if (argv[1][1] == 's') {
 		/* if a key is specified use it, otherwise use default key */
-		if (argv[1][2] != '\0')
-			keystr = argv[1] + 2;
-		eval(keystr);		/* evaluate A+ for multiple authors */
+			if (argv[1][2] != '\0')
+				keystr = argv[1] + 2;
+			eval(keystr);		/* evaluate A+ for multiple authors */
+		}
+		else if (argv[1][1] == 'i'){
+		/* sort following iso-690 bibliography standart */
+			keystr = "QATESVBJ";	/* Needed keys */
+			isosort = 1;			/* follow iso-690 */
+		}
 		argv++; argc--;
 	}
 	if (argc > MXFILES+1)	/* too many open file streams */
@@ -108,7 +116,7 @@ sortbib(FILE *fp, FILE *tfp, int i)	/* read records, prepare list for sorting */
 {
 	long offset, lastoffset = 0;		/* byte offsets in file */
 	int length, newrec = 0, recno = 0;	/* reclen, new rec'd?, number */
-	char line[BUF], fld[4][BUF];		/* one line, the sort fields */
+	char line[BUF], fld[8][BUF];		/* one line, the sort fields */
 
 	/* measure byte offset, then get new line */
 	while (offset = ftell(fp), fgets(line, BUF, fp))
@@ -142,15 +150,45 @@ sortbib(FILE *fp, FILE *tfp, int i)	/* read records, prepare list for sorting */
 			}
 			if (recno++)			/* info for sorting */
 			{
+				if (isosort){
+					/* iso-690 sort
+					** Keys: Q A T E S V B J
+					*/
+					/* if J: Q A T S V J */
+					if (*fld[7]){
+						fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s\n",
+							i, lastoffset, length,
+							fld[0], fld[1], fld[2], fld[4],
+							fld[5], fld[7]);
+					}
+					/* else if B: Q A T E S V B */
+					else if (*fld[6]){
+						fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s %s\n",
+							i, lastoffset, length,
+							fld[0], fld[1], fld[2], fld[3],
+							fld[4], fld[5], fld[6]);
+					}
+					/* else: Q A E S V T */
+					else {
+						fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s\n",
+							i, lastoffset, length,
+							fld[0], fld[1], fld[3], fld[4],
+							fld[2]);
+					}
+				}
+				else {
+
 				fprintf(tfp, "%d %ld %d : %s %s %s %s\n",
 					i, lastoffset, length,
 					fld[0], fld[1], fld[2], fld[3]);
+				}
 				if (ferror(tfp)) {
 					unlink(tempfile);
 					error(tempfile);
 				}
 			}
 			*fld[0] = *fld[1] = *fld[2] = *fld[3] = 0;
+			*fld[4] = *fld[5] = *fld[6] = *fld[7] = 0;
 			oneauth = 0;		/* reset number of authors */
 			lastoffset = offset;	/* save for next time */
 		}
@@ -169,9 +207,34 @@ sortbib(FILE *fp, FILE *tfp, int i)	/* read records, prepare list for sorting */
 	}
 	if (line[0] != '\n')		/* ignore null line just before EOF */
 	{
+		if (isosort){
+			/* if J: Q A T S V J */
+			if (*fld[7]){
+				fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s\n",
+					i, lastoffset, length,
+					fld[0], fld[1], fld[2], fld[4],
+					fld[5], fld[7]);
+			}
+			/* else if B: Q A T E S V B */
+			else if (*fld[6]){
+				fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s %s\n",
+					i, lastoffset, length,
+					fld[0], fld[1], fld[2], fld[3],
+					fld[4], fld[5], fld[6]);
+			}
+			/* else: Q A E S V T */
+			else {
+				fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s\n",
+					i, lastoffset, length,
+					fld[0], fld[1], fld[3], fld[4],
+					fld[2]);
+			}
+		}
+		else {
 		fprintf(tfp, "%d %ld %d : %s %s %s %s\n",
 			i, lastoffset, length,
 			fld[0], fld[1], fld[2], fld[3]);
+		}
 		if (ferror(tfp)) {
 			unlink(tempfile);
 			error(tempfile);	/* disk error in /tmp */
@@ -188,7 +251,10 @@ deliver(FILE **fp, FILE *tfp)	/* deliver sorted entries out of database(s) */
 	int i, length;
 
 	/* when sorting, ignore case distinctions; tab char is ':' */
-	sprintf(cmd, "sort +4f +0n +1n %s -o %s", tempfile, tempfile);
+	/* Unix sort */
+	/* sprintf(cmd, "sort +4f +0n +1n %s -o %s", tempfile, tempfile); */
+	/* posix sort */
+	sprintf(cmd, "sort -k 5f -k 1n -k 2n %s -o %s", tempfile, tempfile);
 	if (system(cmd) == 127) {
 		unlink(tempfile);
 		error("sortbib");
@@ -224,22 +290,23 @@ static void
 parse(char *line, char fld[][BUF])	/* get fields out of line, prepare for sorting */
 {
 	char wd[8][BUF/4];
-	int n, i, j;
+	int n, i, j, k;
 
 	for (i = 0; i < 8; i++)		/* zap out old strings */
 		*wd[i] = 0;
 	n = sscanf(line, "%s %s %s %s %s %s %s %s",
 		wd[0], wd[1], wd[2], wd[3], wd[4], wd[5], wd[6], wd[7]);
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 8; i++)
 	{
 		if (wd[0][1] == keystr[i])
 		{
-			if (wd[0][1] == 'A')
+			if (wd[0][1] == 'A' || wd[0][1] == 'E')
 			{
 				if (oneauth && !multauth)	/* no repeat */
 					break;
 				else if (oneauth)		/* mult auths */
 					strcat(fld[i], "~~");
+				/* Firstname lastname, jr */
 				if (!endcomma(wd[n-2]))		/* surname */
 					strcat(fld[i], wd[n-1]);
 				else {				/* jr. or ed. */
@@ -256,8 +323,9 @@ parse(char *line, char fld[][BUF])	/* get fields out of line, prepare for sortin
 					strcat(fld[i], wd[1]);	/* month */
 			} else if (wd[0][1] == 'T' || wd[0][1] == 'J') {
 				j = 1;
-				if (article(wd[1]))	/* skip article */
-					j++;
+/*				if (article(wd[1]))	// skip article
+ *					j++;
+ */
 				for (; j < n; j++)
 					strcat(fld[i], wd[j]);
 			} else  /* any other field */
