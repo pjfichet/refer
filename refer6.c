@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer6.c,v 0.3 2013/03/12 18:28:16 pj Exp pj $
+ * $Id: refer6.c,v 0.4 2013/03/12 20:32:54 pj Exp pj $
  */
 
 #include "refer..c"
@@ -106,8 +106,10 @@ putref(int n, char **tvec)
 					if (la == 0 || nauth != 2)
 						fprintf(fo, ",");
 					if (la)
-						fprintf(fo,"%s", 
-						mindex(smallcaps, 'A') ? " \\s-2AND\\s+2" : " and");
+						if mindex(newsmallcaps 'A')
+							fprintf(fo," \\*(+J&\\*(-J");
+						else
+							fprintf(fo, " &");
 					fprintf(fo, "%s%c", tx, sep);
 				}
 				lauth = last(tx) == '.';
@@ -131,8 +133,10 @@ putref(int n, char **tvec)
 						if (le == 0 || nedit != 2)
 							fprintf(fo, ",");
 						if (le)
-							fprintf(fo,"%s", 
-							mindex(smallcaps, 'E') ? " \\s-2AND\\s+2" : " and");
+							if mindex(newsmallcaps 'E')
+								fprintf(fo," \\*(+J&\\*(-J");
+							else
+								fprintf(fo, " &");
 						fprintf(fo, "%s%c", tx, sep);
 						ledit = 1;
 					}
