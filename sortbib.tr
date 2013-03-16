@@ -73,31 +73,31 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id: man.sortref.tr,v 1.1 2013/02/22 17:14:49 pj Exp pj $
+$Id: man.sortref.tr,v 1.2 2013/02/25 12:22:40 pj Exp $
 ..
 .
 .
 .
-.ie \n[pdf] .H2 Sortref manual
-.el .H2 SORTREF
+.ie \n[pdf] .H2 Sortbib manual
+.el .H2 SORTBIB
 .
 .
 .
 .H3 NAME
 .PP
-\*Bsortref\*R \- Sort bibliographic database following iso-690 standart
+\*Bsortbib\*R \- Sort refer bibliographic database following iso-690 standart
 .
 .
 .
 .H3 SYNOPSIS
 .PP
-\*Isortref\*R [\*B\-i\*R|\*B\-s\*R\*IKEYS\*R] \*Idatabase\*R ...
+\*Isortbib\*R [\*B\-i\*R|\*B\-s\*R\*IKEYS\*R] \*Idatabase\*R ...
 .
 .
 .
 .H3 DESCRIPTION
 .PP
-\*ISortref\*R sorts files of records containing \*Irefer\*R
+\*ISortbib\*R sorts files of records containing \*Irefer\*R
 key-letters by user-specified keys. Records may be separated
 by blank lines, or by \*B\&.[\*R and \*B\&.]\*R delimiters,
 but the two styles may not be mixed together. This program
@@ -105,10 +105,10 @@ reads through each \*Idatabase\*R and pulls out key fields,
 which are sorted separately. The sorted key fields contain
 the file pointer, byte offset, and length of corresponding
 records. These records are delivered using disk seeks and
-reads, so \*Isortref\*R may not be used in a pipeline to
+reads, so \*Isortbib\*R may not be used in a pipeline to
 read standard input.
 .PP
-By default, \*Isortref\*R alphabetize the first \*B%A\*R and
+By default, \*Isortbib\*R alphabetize the first \*B%A\*R and
 \*B%D\*R fields, which contain the senior author and date.
 .PP
 The \*B-i\*R option is used to sort database following an
@@ -130,7 +130,7 @@ date. Sort keys past the fourth are not meaningful. No
 more than 16 databases may be sorted together at one time.
 Records longer than 4096 characters will be truncated.
 .PP
-\*ISortref\*R sorts on last word on the \*B%A\*R and
+\*ISortbib\*R sorts on last word on the \*B%A\*R and
 \*B%E\*R line, which are assumed to be the author's and
 editor's last name.  A word in the final position, such as
 ``jr.'' or ``ed.'', will be ignored if the name beforehand
@@ -139,7 +139,7 @@ unusual constructions can be sorted correctly by using the
 \*Inroff\*R convention ``\*B\*e0\*R'' in place of a blank.
 A \*B%Q\*R field is considered to be the same as \*B%A\*R,
 except sorting begins with the first, not the last, word.
-\*ISortref\*R sorts on the last word of the \*B%D\*R line,
+\*ISortbib\*R sorts on the last word of the \*B%D\*R line,
 usually the year.
 .ig
 It also ignores leading articles (like ``A'' or ``The'')
@@ -147,21 +147,21 @@ when sorting by titles in the %T or %J fields;
 it will ignore articles of any modern European language.
 ..
 If a sort-significant field is absent from a record,
-\*Isortref\*R places that record before other records
+\*Isortbib\*R places that record before other records
 containing that field.
 .
 .
 .
 .H3 LICENSE
 .PP
-\*ISortref\*R is distributed under the CDDL1.0 License.
+\*ISortbib\*R is distributed under the CDDL1.0 License.
 This manual page is distributed under a four clause BSD
 License.
 .
 .
 .H3 FILES
 .PP
-\*I@BINDIR@/sortref\*R
+\*I@BINDIR@/sortbib\*R
 .
 .
 .H3 SEE ALSO
