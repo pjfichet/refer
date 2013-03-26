@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer6.c,v 0.7 2013/03/12 21:26:59 pj Exp pj $
+ * $Id: refer6.c,v 0.8 2013/03/16 18:42:32 pj Exp pj $
  */
 
 #include "refer..c"
@@ -298,7 +298,7 @@ newcaps(char *s, char*b)
 	*b++ = '\\';
 	*b++ = '*';
 	*b++ = '(';
-	*b++ = '+';
+	*b++ = '-';
 	*b++ = 'L';
 	if (*jr) {
 		*b++ = *jr++; // coma
