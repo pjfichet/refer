@@ -1,4 +1,4 @@
-.DI $Id: man.sortbib.tr,v 1.4 2013/03/30 11:43:57 pj Exp pj $
+.DI $Id: man.sortbib.tr,v 1.5 2013/03/30 17:45:26 pj Exp pj $
 .DA Written by Greg Shenaut & Bill Tuthill, modified by Pierre-Jean Fichet
 .DS Utroff sortbib manual
 .DT Utroff sortbib manual
@@ -78,7 +78,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id: man.sortbib.tr,v 1.4 2013/03/30 11:43:57 pj Exp pj $
+$Id: man.sortbib.tr,v 1.5 2013/03/30 17:45:26 pj Exp pj $
 ..
 .
 .
@@ -171,11 +171,21 @@ License.
 .
 .H3 SEE ALSO
 .PP
-refer(1B), addbib(1B), roffbib(1B), indxbib(1B),
-lookbib(1B), iso690(7)
+.LP refer(1) ,
+.LL man.refer.tr
+.LP u-ref(7) .
+.LL man.u-ref.tr
+.\".LP addbib(1) ,
+.\".LL man.addbib.tr
+.\".LP roffbib(1) ,
+.\".LL man.roffbib.tr
+.\".LP indxbib(1) ,
+.\".LL man.indxbib.tr
+.\".LP lookbib(1) .
 .
 .
+.so so.bugs.tr
 .H3 AUTHORS
 .PP
-Written by Greg Shenaut & Bill Tuthill. Modified by
-Pierre-Jean Fichet.
+Written by Greg \*CShenaut\*R & Bill \*CTuthill\*R. Modified by
+Pierre-Jean \*CFichet\*R.
