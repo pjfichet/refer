@@ -1,4 +1,4 @@
-.DI $Id: man.mkey.tr,v 1.4 2013/03/30 17:45:26 pj Exp pj $
+.DI $Id: man.mkey.tr,v 1.5 2013/04/06 22:05:18 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff mkey manual
 .DT Utroff mkey manual
@@ -24,13 +24,16 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.H2 Mkey 1
+.US um .H2 MKEY 1
+.US ! um .H2 Mkey manual
 .
 .
-.H3 NAME
+.US um .H3 NAME
+.US ! um .H3 Name
 .PP
 \*BMkey\*R \(em Build an index of keys from files
-.H3 SYNOPSIS
+.US um .H3 SYNOPSIS
+.US ! um .H3 Synopsis
 .PP
 \*Bmkey\*R [\*B-sw\*R]
 [\*B-c\*R \*Iname\*R]
@@ -40,7 +43,8 @@
 [\*B-l\*R\*In\*R]
 [\*B-n\*R\*Im\*R]
 \*Ifile\*R [\*Ifile...\*R]
-.H3 DESCRIPTION
+.US um .H3 DESCRIPTION
+.US ! um .H3 Description
 .PP
 \*BMkey\*R reads its input from the file names given as
 arguments, and, if there is no arguments, it reads from the
@@ -82,12 +86,14 @@ indexing.
 .PI "\*B-w\*R"
 Each whole file is a separate item; blank lines are
 irrelevant.
-.H3 FILES
+.US um .H3 FILES
+.US ! um .H3 Files
 .PP
 \*I@BINDIR@/mkey\*R	Executable.
 .br
 \*I@LIBDIR@/eign\*R	List of frequent english words.
-.H3 LICENSE
+.US um .H3 LICENSE
+.US ! um .H3 License
 .PP
 The text of this manual page comes from \*ISome application
 of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
@@ -99,7 +105,8 @@ software \*Imkey\*R is distributed under the
 .LP CDDL-1.0
 .LL lic.cddl.tr
 license.
-.H3 SEE ALSO
+.US um .H3 SEE ALSO
+.US ! um .H3 See also
 .PP
 .LP refer(1) ,
 .LL man.refer.tr
@@ -122,7 +129,8 @@ license.
 and \*ISome application of Inverted Indexes in the UNIX
 System\*R by M. E. \*CLesk\*R.
 .so so.bugs.tr
-.H3 AUTHORS
+.US um .H3 AUTHORS
+.US ! um .H3 Authors
 .PP
 This manual page is made from the document \*ISome
 application of Inverted Indexes in the UNIX System\*R by M.

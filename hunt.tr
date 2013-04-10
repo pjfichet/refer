@@ -1,4 +1,4 @@
-.DI $Id: man.hunt.tr,v 1.4 2013/03/30 17:45:26 pj Exp pj $
+.DI $Id: man.hunt.tr,v 1.5 2013/04/06 22:05:18 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff hunt manual
 .DT Utroff hunt manual
@@ -24,10 +24,12 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.H2 Hunt 1
+.US um .H2 HUNT 1
+.US ! um .H2 Hunt manual
 .
 .
-.H3 NAME
+.US um .H3 NAME
+.US ! um .H3 Name
 .PP
 \*Ihunt\*R \(em Retrieve items from an \*Imkey\*R index.
 .H3 SYNOPSIS
@@ -40,7 +42,8 @@
 [\*B-o\*R \*Istring\*R]
 [\*B-T\*R[\*Iynd\*R]]
 [\*B-t\*R \*Istring\*R] < \*Ifile\*R
-.H3 DESCRIPTION
+.US um .H3 DESCRIPTION
+.US ! um .H3 Description
 .PP
 The \*Ihunt\*R program retrieves items from an index. It
 combines, as mentioned above, the two parts of that process:
@@ -126,10 +129,12 @@ overspecification is quite cheap. In general,
 overspecification can be recommended; it protects the user
 against additions to the data base which turn previously
 uniquely-answered queries into ambiguous queries.
-.H3 FILES
+.US um .H3 FILES
+.US ! um .H3 Files
 .PP
 \*I@BINDIR@/hunt\*R	Executable.
-.H3 LICENSE
+.US um .H3 LICENSE
+.US ! um .H3 License
 .PP
 The text of this manual page comes from \*ISome application
 of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
@@ -140,7 +145,8 @@ license. The software \*Ihunt\*R is distributed under the
 .LP CDDL-1.0
 .LL lic.cddl.tr
 license.
-.H3 SEE ALSO
+.US um .H3 SEE ALSO
+.US ! um .H3 See also
 .PP
 .LP refer(1) ,
 .LL man.refer.tr
@@ -161,6 +167,7 @@ license.
 and \*ISome application of Inverted Indexes in the UNIX
 System\*R by M. E. Lesk.
 .so so.bugs.tr
-.H3 AUTHORS
+.US um .H3 AUTHORS
+.US ! um .H3 Authors
 .PP
 M. E. \*CLesk\*R, modified by Pierre-Jean \*CFichet\*R.

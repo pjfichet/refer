@@ -1,4 +1,4 @@
-.DI $Id: man.sortbib.tr,v 1.5 2013/03/30 17:45:26 pj Exp pj $
+.DI $Id: man.sortbib.tr,v 1.6 2013/04/06 22:05:18 pj Exp pj $
 .DA Written by Greg Shenaut & Bill Tuthill, modified by Pierre-Jean Fichet
 .DS Utroff sortbib manual
 .DT Utroff sortbib manual
@@ -78,29 +78,32 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id: man.sortbib.tr,v 1.5 2013/03/30 17:45:26 pj Exp pj $
+$Id: man.sortbib.tr,v 1.6 2013/04/06 22:05:18 pj Exp pj $
 ..
 .
 .
 .
-.ie \n[pdf] .H2 Sortbib manual
-.el .H2 SORTBIB 1
+.US um .H2 SORTBIB 1
+.US ! um .H2 Sortbib manual
 .
 .
 .
-.H3 NAME
+.US um .H3 NAME
+.US ! um .H3 Name
 .PP
 \*Bsortbib\*R \- Sort refer bibliographic database following iso-690 standart
 .
 .
 .
-.H3 SYNOPSIS
+.US um .H3 SYNOPSIS
+.US ! um .H3 Synopsis
 .PP
 \*Isortbib\*R [\*B\-i\*R|\*B\-s\*R\*IKEYS\*R] \*Idatabase\*R ...
 .
 .
 .
-.H3 DESCRIPTION
+.US um .H3 DESCRIPTION
+.US ! um .H3 Description
 .PP
 \*ISortbib\*R sorts files of records containing \*Irefer\*R
 key-letters by user-specified keys. Records may be separated
@@ -157,19 +160,22 @@ containing that field.
 .
 .
 .
-.H3 LICENSE
+.US um .H3 LICENSE
+.US ! um .H3 License
 .PP
 \*ISortbib\*R is distributed under the CDDL1.0 License.
 This manual page is distributed under a four clause BSD
 License.
 .
 .
-.H3 FILES
+.US um .H3 FILES
+.US ! um .H3 Files
 .PP
 \*I@BINDIR@/sortbib\*R
 .
 .
-.H3 SEE ALSO
+.US um .H3 SEE ALSO
+.US ! um .H3 See also
 .PP
 .LP refer(1) ,
 .LL man.refer.tr
@@ -185,7 +191,8 @@ License.
 .
 .
 .so so.bugs.tr
-.H3 AUTHORS
+.US um .H3 AUTHORS
+.US ! um .H3 Authors
 .PP
 Written by Greg \*CShenaut\*R & Bill \*CTuthill\*R. Modified by
 Pierre-Jean \*CFichet\*R.
