@@ -1,4 +1,4 @@
-.DI $Id: man.mkey.tr,v 1.6 2013/04/10 15:36:15 pj Exp $
+.DI $Id: mkey.tr,v 1.7 2013/04/12 17:17:27 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff mkey manual
 .DT Utroff mkey manual
@@ -139,7 +139,7 @@ license.
 .US ux .LU @WEBURL@/man/hunt.html
 and \*ISome application of Inverted Indexes in the UNIX
 System\*R by M. E. \*CLesk\*R.
-.so so.bugs.tr
+.so ../doc/bugs.tr
 .US um .H3 AUTHORS
 .US ! um .H3 Authors
 .PP
