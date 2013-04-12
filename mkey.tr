@@ -1,4 +1,4 @@
-.DI $Id: man.mkey.tr,v 1.5 2013/04/06 22:05:18 pj Exp pj $
+.DI $Id: man.mkey.tr,v 1.6 2013/04/10 15:36:15 pj Exp $
 .DA M. E. Lesk
 .DS Utroff mkey manual
 .DT Utroff mkey manual
@@ -99,33 +99,44 @@ The text of this manual page comes from \*ISome application
 of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
 which is distributed under the
 .LP "original BSD"
-.LL lic.bsd4.tr
+.US ! ux .LL ../doc/bsd4.tr
+.US ux .LU @WEBURL@/man/bsd4-license.html
 license. The
 software \*Imkey\*R is distributed under the
 .LP CDDL-1.0
-.LL lic.cddl.tr
+.US ! ux .LL ../doc/cddl.tr
+.US ux .LU @WEBURL@/man/cddl-license.html
 license.
 .US um .H3 SEE ALSO
 .US ! um .H3 See also
 .PP
 .LP refer(1) ,
-.LL man.refer.tr
+.US ! ux .LL refer.tr
+.US ux .LU @WEBURL@/man/refer.html
 .LP referformat(7) ,
-.LL man.referformat.tr
+.US ! ux .LL referformat.tr
+.US ux .LU @WEBURL@/man/referformat.html
 .\".LP addbib(1) ,
-.\".LL man.addbib.tr
+.\".US ! ux .LL addbib.tr
+.\".US ux .LU @WEBURL@/man/addbib.html
 .LP sortbib(1) ,
-.LL man.sortbib.tr
+.US ! ux .LL sortbib.tr
+.US ux .LU @WEBURL@/man/sortbib.html
 .\".LP roffbib(1) ,
-.\".LL man.roffbib.tr
+.\".US ! ux .LL roffbib.tr
+.\".US ux .LU @WEBURL@/man/roffbib.html
 .\".LP indxbib(1) ,
-.\".LL man.indxbib.tr
+.\".US ! ux .LL indxbib.tr
+.\".US ux .LU @WEBURL@/man/indxbib.html
 .\".LP lookbib(1) ,
-.\".LL man.lookbib.tr
+.\".US ! ux .LL lookbib.tr
+.\".US ux .LU @WEBURL@/man/lookbib.html
 .LP inv(1) ,
-.LL man.inv.tr
+.US ! ux .LL inv.tr
+.US ux .LU @WEBURL@/man/inv.html
 .LP hunt(1) ,
-.LL man.hunt.tr
+.US ! ux .LL hunt.tr
+.US ux .LU @WEBURL@/man/hunt.html
 and \*ISome application of Inverted Indexes in the UNIX
 System\*R by M. E. \*CLesk\*R.
 .so so.bugs.tr
