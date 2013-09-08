@@ -1,4 +1,4 @@
-.DI $Id: sortbib.tr,v 1.8 2013/04/12 17:17:27 pj Exp pj $
+.DI $Id: sortbib.tr,v 1.9 2013/04/12 17:46:41 pj Exp pj $
 .DA Written by Greg Shenaut & Bill Tuthill, modified by Pierre-Jean Fichet
 .DS Utroff sortbib manual
 .DT Utroff sortbib manual
@@ -78,7 +78,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id: sortbib.tr,v 1.8 2013/04/12 17:17:27 pj Exp pj $
+$Id: sortbib.tr,v 1.9 2013/04/12 17:46:41 pj Exp pj $
 ..
 .
 .
@@ -165,11 +165,11 @@ containing that field.
 .PP
 \*ISortbib\*R is distributed under the
 .LP "CDDL1.0 license" .
-.US ! ux .LL ../doc/cddl.tr
+.US ! ux .LL ../share/cddl.tr
 .US ux .LU @WEBURL@/man/cddl-license.html
 This manual page is distributed under a
 .LP "four clause BSD"
-.US ! ux .LL ../doc/bsd4.tr
+.US ! ux .LL ../share/bsd4.tr
 .US ux .LU @WEBURL@/man/bsd4-license.html
 License.
 .
@@ -201,7 +201,7 @@ License.
 .\".LP lookbib(1) .
 .
 .
-.so ../doc/bugs.tr
+.so ../share/bugs.tr
 .US um .H3 AUTHORS
 .US ! um .H3 Authors
 .PP

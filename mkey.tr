@@ -1,4 +1,4 @@
-.DI $Id: mkey.tr,v 1.7 2013/04/12 17:17:27 pj Exp pj $
+.DI $Id: mkey.tr,v 1.8 2013/04/12 17:46:41 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff mkey manual
 .DT Utroff mkey manual
@@ -99,12 +99,12 @@ The text of this manual page comes from \*ISome application
 of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
 which is distributed under the
 .LP "original BSD"
-.US ! ux .LL ../doc/bsd4.tr
+.US ! ux .LL ../share/bsd4.tr
 .US ux .LU @WEBURL@/man/bsd4-license.html
 license. The
 software \*Imkey\*R is distributed under the
 .LP CDDL-1.0
-.US ! ux .LL ../doc/cddl.tr
+.US ! ux .LL ../share/cddl.tr
 .US ux .LU @WEBURL@/man/cddl-license.html
 license.
 .US um .H3 SEE ALSO
@@ -139,7 +139,7 @@ license.
 .US ux .LU @WEBURL@/man/hunt.html
 and \*ISome application of Inverted Indexes in the UNIX
 System\*R by M. E. \*CLesk\*R.
-.so ../doc/bugs.tr
+.so ../share/bugs.tr
 .US um .H3 AUTHORS
 .US ! um .H3 Authors
 .PP
