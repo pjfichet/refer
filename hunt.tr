@@ -1,4 +1,4 @@
-.DI $Id: hunt.tr,v 1.8 2013/04/12 17:46:41 pj Exp pj $
+.DI $Id: hunt.tr,v 1.9 2013/09/08 15:43:05 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff hunt manual
 .DT Utroff hunt manual
@@ -141,11 +141,11 @@ of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
 which is distributed under the
 .LP "original BSD"
 .US ! ux .LL ../share/bsd4.tr
-.US ux .LU @WEBURL@/man/bsd4-license.html
+.US ux .LU @WEBURL@/man/bsd4.html
 license. The software \*Ihunt\*R is distributed under the
 .LP CDDL-1.0
 .US ! ux .LL ../share/cddl.tr
-.US ux .LU @WEBURL@/man/cddl-license.html
+.US ux .LU @WEBURL@/man/cddl.html
 license.
 .US um .H3 SEE ALSO
 .US ! um .H3 See also
