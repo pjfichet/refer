@@ -1,4 +1,4 @@
-.DI $Id: sortbib.tr,v 1.10 2013/09/08 15:43:05 pj Exp pj $
+.DI $Id: sortbib.tr,v 1.11 2013/10/30 20:17:35 pj Exp pj $
 .DA Written by Greg Shenaut & Bill Tuthill, modified by Pierre-Jean Fichet
 .DS Utroff sortbib manual
 .DT Utroff sortbib manual
@@ -78,7 +78,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id: sortbib.tr,v 1.10 2013/09/08 15:43:05 pj Exp pj $
+$Id: sortbib.tr,v 1.11 2013/10/30 20:17:35 pj Exp pj $
 ..
 .
 .
@@ -91,63 +91,64 @@ $Id: sortbib.tr,v 1.10 2013/09/08 15:43:05 pj Exp pj $
 .US um .H3 NAME
 .US ! um .H3 Name
 .PP
-\*Bsortbib\*R \- Sort refer bibliographic database following iso-690 standart
+\*Bsortbib\*B \- Sort refer bibliographic database following
+iso-690 standart
 .
 .
 .
 .US um .H3 SYNOPSIS
 .US ! um .H3 Synopsis
 .PP
-\*Isortbib\*R [\*B\-i\*R|\*B\-s\*R\*IKEYS\*R] \*Idatabase\*R ...
+\*Isortbib\*I [\*B\-i\*B|\*B\-s\*B\*IKEYS\*I] \*Idatabase\*I ...
 .
 .
 .
 .US um .H3 DESCRIPTION
 .US ! um .H3 Description
 .PP
-\*ISortbib\*R sorts files of records containing \*Irefer\*R
+\*ISortbib\*I sorts files of records containing \*Irefer\*I
 key-letters by user-specified keys. Records may be separated
-by blank lines, or by \*B\&.[\*R and \*B\&.]\*R delimiters,
+by blank lines, or by \*B\&.[\*B and \*B\&.]\*B delimiters,
 but the two styles may not be mixed together. This program
-reads through each \*Idatabase\*R and pulls out key fields,
+reads through each \*Idatabase\*I and pulls out key fields,
 which are sorted separately. The sorted key fields contain
 the file pointer, byte offset, and length of corresponding
 records. These records are delivered using disk seeks and
-reads, so \*Isortbib\*R may not be used in a pipeline to
+reads, so \*Isortbib\*I may not be used in a pipeline to
 read standard input.
 .PP
-By default, \*Isortbib\*R alphabetize the first \*B%A\*R and
-\*B%D\*R fields, which contain the senior author and date.
+By default, \*Isortbib\*I alphabetize the first \*B%A\*B and
+\*B%D\*B fields, which contain the senior author and date.
 .PP
-The \*B-i\*R option is used to sort database following an
-algorythm which aims to respect the \*Iiso-690\*R
+The \*B-i\*B option is used to sort database following an
+algorythm which aims to respect the \*Iiso-690\*I
 bibliography standart:
 .PI
-If \*BJ\*R is defined, the order of fields is:
-\*BQA+TE+SVBJ\*R.
+If \*BJ\*B is defined, the order of fields is:
+\*BQA+TE+SVBJ\*B.
 .PI
-Else, if \*BB\*R is defined, the order of fields is:
-\*BQA+TE+SVB\*R.
+Else, if \*BB\*B is defined, the order of fields is:
+\*BQA+TE+SVB\*B.
 .PI
-Else, the order of fields is: \*BQA+E+SVT\*R.
+Else, the order of fields is: \*BQA+E+SVT\*B.
 .PP
-The \*B\-s\*R option is used to specify new \*IKEYS\*R. For
-instance, \*B\-sATD\*R will sort by author, title, and
-date, while \*B\-sA+D\*R will sort by all authors, and
+The \*B\-s\*B option is used to specify new \*IKEYS\*I. For
+instance, \*B\-sATD\*B will sort by author, title, and
+date, while \*B\-sA+D\*B will sort by all authors, and
 date. Sort keys past the fourth are not meaningful. No
 more than 16 databases may be sorted together at one time.
 Records longer than 4096 characters will be truncated.
 .PP
-\*ISortbib\*R sorts on last word on the \*B%A\*R and
-\*B%E\*R line, which are assumed to be the author's and
-editor's last name.  A word in the final position, such as
+\*ISortbib\*I sorts on last word on the \*B%A\*B and
+\*B%E\*B line, which are assumed to be the author's and
+editor's last name. A word in the final position, such as
 ``jr.'' or ``ed.'', will be ignored if the name beforehand
-ends with a comma.  Authors with two-word last names or
+ends with a comma. Authors with two-word last names or
 unusual constructions can be sorted correctly by using the
-\*Inroff\*R convention ``\*B\*e0\*R'' in place of a blank.
-A \*B%Q\*R field is considered to be the same as \*B%A\*R,
+\*Inroff\*I convention ``\*B\*e0\*B'' in place of a blank.
+A \*B%Q\*B field is considered to be the same as \*B%A\*B,
 except sorting begins with the first, not the last, word.
-\*ISortbib\*R sorts on the last word of the \*B%D\*R line,
+\*ISortbib\*I sorts on the last word of the \*B%D\*B line,
 usually the year.
 .ig
 It also ignores leading articles (like ``A'' or ``The'')
@@ -155,7 +156,7 @@ when sorting by titles in the %T or %J fields;
 it will ignore articles of any modern European language.
 ..
 If a sort-significant field is absent from a record,
-\*Isortbib\*R places that record before other records
+\*Isortbib\*I places that record before other records
 containing that field.
 .
 .
@@ -163,7 +164,7 @@ containing that field.
 .US um .H3 LICENSE
 .US ! um .H3 License
 .PP
-\*ISortbib\*R is distributed under the
+\*ISortbib\*I is distributed under the
 .LP "CDDL1.0 license" .
 .US ! ux .LL ../share/cddl.tr
 .US ux .LU @WEBURL@/man/cddl.html
@@ -177,7 +178,7 @@ License.
 .US um .H3 FILES
 .US ! um .H3 Files
 .PP
-\*I@BINDIR@/sortbib\*R
+\*I@BINDIR@/sortbib\*I
 .
 .
 .US um .H3 SEE ALSO
@@ -205,5 +206,5 @@ License.
 .US um .H3 AUTHORS
 .US ! um .H3 Authors
 .PP
-Written by Greg \*CShenaut\*R & Bill \*CTuthill\*R. Modified by
-Pierre-Jean \*CFichet\*R.
+Written by Greg \*CShenaut\*C & Bill \*CTuthill\*C. Modified by
+Pierre-Jean \*CFichet\*C.
