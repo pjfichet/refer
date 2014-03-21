@@ -1,4 +1,4 @@
-.DI $Id: mkey.tr,v 1.9 2013/09/08 15:43:05 pj Exp pj $
+.DI $Id: mkey.tr,v 1.10 2013/10/30 20:17:35 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff mkey manual
 .DT Utroff mkey manual
@@ -31,27 +31,27 @@
 .US um .H3 NAME
 .US ! um .H3 Name
 .PP
-\*BMkey\*R \(em Build an index of keys from files
+\*BMkey\*B \(em Build an index of keys from files
 .US um .H3 SYNOPSIS
 .US ! um .H3 Synopsis
 .PP
-\*Bmkey\*R [\*B-sw\*R]
-[\*B-c\*R \*Iname\*R]
-[\*B-f\*R \*Iname\*R]
-[\*B-i\*R \*Ichars\*R]
-[\*B-k\*R\*In\*R]
-[\*B-l\*R\*In\*R]
-[\*B-n\*R\*Im\*R]
-\*Ifile\*R [\*Ifile...\*R]
+\*Bmkey\*B [\*B-sw\*B]
+[\*B-c\*B \*Iname\*I]
+[\*B-f\*B \*Iname\*I]
+[\*B-i\*B \*Ichars\*I]
+[\*B-k\*B\*In\*I]
+[\*B-l\*B\*In\*I]
+[\*B-n\*B\*Im\*I]
+\*Ifile\*I [\*Ifile...\*I]
 .US um .H3 DESCRIPTION
 .US ! um .H3 Description
 .PP
-\*BMkey\*R reads its input from the file names given as
+\*BMkey\*B reads its input from the file names given as
 arguments, and, if there is no arguments, it reads from the
 standart input. It assumes that blank lines in the input
 delimit separate items for each of which a different line of
-\*Bkeys\*R should be generated. The lines of keys are
-written on the standard output. \*BKeys\*R are any
+\*Bkeys\*B should be generated. The lines of keys are
+written on the standard output. \*BKeys\*B are any
 alphanumeric string in the input not among the most frequent
 words in English and not entirely numeric (except that
 all-numeric strings are acceptable if they are between 1900
@@ -59,50 +59,50 @@ and 1999). In the output, keys are translated to lower case,
 and truncated to six characters in length; any associated
 punctuation is removed.
 .PP
-The following flags arguments are recognized by \*Bmkey\*R.
-.PI "\*B-c\*R \*Iname\*R
+The following flags arguments are recognized by \*Bmkey\*B.
+.PI "\*B-c\*B \*Iname\*I
 Name of file of common words. Default is
-\*I@LIBDIR@/eign\*R.
-.PI "\*B-f\*R \*Iname\*R"
-Read a list of files from \*Iname\*R and take each as an
+\*I@LIBDIR@/eign\*I.
+.PI "\*B-f\*B \*Iname\*I"
+Read a list of files from \*Iname\*I and take each as an
 input argument.
-.PI "\*B-i\*R \*Ichars\*R"
-Ignore each line wich begin with '\*B%\*R' followed by any
-character in \*Ichars\*R.
-.PI "\*B-k\*R\*In\*R"
-Use at most \*In\*R keys per input item. Unless this option
-is used, the output of \*Bmkey\*R is comparable in size to
+.PI "\*B-i\*B \*Ichars\*I"
+Ignore each line wich begin with '\*B%\*B' followed by any
+character in \*Ichars\*I.
+.PI "\*B-k\*B\*In\*I"
+Use at most \*In\*I keys per input item. Unless this option
+is used, the output of \*Bmkey\*B is comparable in size to
 its input.
-.PI "\*B-l\*R\*In\*R"
-Ignore items shorter than \*In\*R letter longs. Default is
+.PI "\*B-l\*B\*In\*I"
+Ignore items shorter than \*In\*I letter longs. Default is
 3.
-.PI "\*B-n\*R\*Im\*R"
-Ignore as a key any word in the first \*Im\*R words of the
+.PI "\*B-n\*B\*Im\*I"
+Ignore as a key any word in the first \*Im\*I words of the
 list of common English words. The default is 100.
-.PI "\*B-s\*R
-Remove the labels (\*Ifile:start,length\*R) from the output;
+.PI "\*B-s\*B
+Remove the labels (\*Ifile:start,length\*I) from the output;
 just give the keys. Used when searching rather than
 indexing.
-.PI "\*B-w\*R"
+.PI "\*B-w\*B"
 Each whole file is a separate item; blank lines are
 irrelevant.
 .US um .H3 FILES
 .US ! um .H3 Files
 .PP
-\*I@BINDIR@/mkey\*R	Executable.
+\*I@BINDIR@/mkey\*I	Executable.
 .br
-\*I@LIBDIR@/eign\*R	List of frequent english words.
+\*I@LIBDIR@/eign\*I	List of frequent english words.
 .US um .H3 LICENSE
 .US ! um .H3 License
 .PP
 The text of this manual page comes from \*ISome application
-of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
+of Inverted Indexes in the UNIX System\*I by M. E. Lesk,
 which is distributed under the
 .LP "original BSD"
 .US ! ux .LL ../share/bsd4.tr
 .US ux .LU @WEBURL@/man/bsd4.html
 license. The
-software \*Imkey\*R is distributed under the
+software \*Imkey\*I is distributed under the
 .LP CDDL-1.0
 .US ! ux .LL ../share/cddl.tr
 .US ux .LU @WEBURL@/man/cddl.html
@@ -138,11 +138,11 @@ license.
 .US ! ux .LL hunt.tr
 .US ux .LU @WEBURL@/man/hunt.html
 and \*ISome application of Inverted Indexes in the UNIX
-System\*R by M. E. \*CLesk\*R.
+System\*I by M. E. \*CLesk\*C.
 .so ../share/bugs.tr
 .US um .H3 AUTHORS
 .US ! um .H3 Authors
 .PP
 This manual page is made from the document \*ISome
-application of Inverted Indexes in the UNIX System\*R by M.
-E. \*CLesk\*R. Modified by Pierre-Jean \*CFichet\*R
+application of Inverted Indexes in the UNIX System\*I by M.
+E. \*CLesk\*C. Modified by Pierre-Jean \*CFichet\*C
