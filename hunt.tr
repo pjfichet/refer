@@ -1,4 +1,4 @@
-.DI $Id: hunt.tr,v 1.10 2013/10/30 20:17:35 pj Exp pj $
+.DI $Id: hunt.tr,v 1.11 2014/03/22 19:24:02 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff hunt manual
 .DT Utroff hunt manual
@@ -84,33 +84,33 @@ than \*In\*I terms of the input missing; default
 \*B-C\*B\*I0\*I , implying that each search term must be in the
 output items.
 .PI \*B-F\*B[\*Iynd\*I]
-‘\*B-F\*B\*Iy\*I’ gives the text of all the items found;
-‘\*B-F\*B\*In\*I’’ suppresses them.
-‘\*B-F\*B\*Id\*I’ where \*Id\*I is an integer gives the text of
+\&"\*B-F\*B\*Iy\*I" gives the text of all the items found;
+\&"\*B-F\*B\*In\*I" suppresses them.
+\&"\*B-F\*B\*Id\*I" where \*Id\*I is an integer gives the text of
 the first \*Id\*I items.
 The default is \*B-F\*B\*Iy\*I.
 .PI \*B-g\*B
 Do not use \*Ifgrep\*I to search files changed since the
 index was made; print an error comment instead.
-.PI "\*B-i\*B \*Istring\*I
+.PI "\*B-i\*B \*Istring\*I"
 Take \*Istring\*I as input, instead of reading the standard input.
 .PI "\*B-l\*B \*In\*I"
 The maximum length of internal lists of candidate items is
 \*In\*I; default is 1000.
 .PI "\*B-o\*B \*Istring\*I"
-Put text output (‘\*BF\*B\*Iy\*I’) in \*Istring\*I; of use only
+Put text output ("\*BF\*B\*Iy\*I") in \*Istring\*I; of use only
 when invoked from another program.
 .PI \*B-p\*B
 Print hash code frequencies; mostly for use in optimizing
 hash table sizes.
 .PI \*B-T\*B[\*Iynd\*I]
-‘\*B-T\*B\*Iy\*I’ gives the tags of the items found;
-‘\*B-T\*B\*In\*I’ suppresses them.
-‘\*B-T\*B\*Id\*I’ where \*Id\*I is an integer gives the first
+\&"\*B-T\*B\*Iy\*I" gives the tags of the items found;
+\&"\*B-T\*B\*In\*I" suppresses them.
+\&"\*B-T\*B\*Id\*I" where \*Id\*I is an integer gives the first
 \*Id\*I tags.
 The default is \*B-T\*B\*In\*I.
 .PI "\*B-t\*B \*Istring\*I"
-Put tag output (‘\*B-T\*B\*Iy\*I’) in string; of use only when
+Put tag output ("\*B-T\*B\*Iy\*I") in string; of use only when
 invoked from another program.
 .PP
 The timing of \*Ihunt\*I is complex. Normally the hash table is

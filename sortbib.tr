@@ -1,4 +1,4 @@
-.DI $Id: sortbib.tr,v 1.11 2013/10/30 20:17:35 pj Exp pj $
+.DI $Id: sortbib.tr,v 1.12 2014/03/21 09:32:43 pj Exp pj $
 .DA Written by Greg Shenaut & Bill Tuthill, modified by Pierre-Jean Fichet
 .DS Utroff sortbib manual
 .DT Utroff sortbib manual
@@ -78,7 +78,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
 from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
 
-$Id: sortbib.tr,v 1.11 2013/10/30 20:17:35 pj Exp pj $
+$Id: sortbib.tr,v 1.12 2014/03/21 09:32:43 pj Exp pj $
 ..
 .
 .
@@ -142,16 +142,16 @@ Records longer than 4096 characters will be truncated.
 \*ISortbib\*I sorts on last word on the \*B%A\*B and
 \*B%E\*B line, which are assumed to be the author's and
 editor's last name. A word in the final position, such as
-``jr.'' or ``ed.'', will be ignored if the name beforehand
+"jr." or "ed.", will be ignored if the name beforehand
 ends with a comma. Authors with two-word last names or
 unusual constructions can be sorted correctly by using the
-\*Inroff\*I convention ``\*B\*e0\*B'' in place of a blank.
+\*Inroff\*I convention "\*B\*e0\*B" in place of a blank.
 A \*B%Q\*B field is considered to be the same as \*B%A\*B,
 except sorting begins with the first, not the last, word.
 \*ISortbib\*I sorts on the last word of the \*B%D\*B line,
 usually the year.
 .ig
-It also ignores leading articles (like ``A'' or ``The'')
+It also ignores leading articles (like "A" or "The")
 when sorting by titles in the %T or %J fields;
 it will ignore articles of any modern European language.
 ..
