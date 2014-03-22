@@ -1,4 +1,4 @@
-.DI $Id: hunt.tr,v 1.9 2013/09/08 15:43:05 pj Exp pj $
+.DI $Id: hunt.tr,v 1.10 2013/10/30 20:17:35 pj Exp pj $
 .DA M. E. Lesk
 .DS Utroff hunt manual
 .DT Utroff hunt manual
@@ -31,21 +31,21 @@
 .US um .H3 NAME
 .US ! um .H3 Name
 .PP
-\*Ihunt\*R \(em Retrieve items from an \*Imkey\*R index.
+\*Ihunt\*I \(em Retrieve items from an \*Imkey\*I index.
 .H3 SYNOPSIS
 .PP
-\*Ihunt\*R [\*B-agp\*R]
-[\*B-C\*R\*In\*R]
-[\*B-F\*R[\*Iynd\*R]]
-[\*B-i\*R \*Istring\*R]
-[\*B-l\*R \*In\*R]
-[\*B-o\*R \*Istring\*R]
-[\*B-T\*R[\*Iynd\*R]]
-[\*B-t\*R \*Istring\*R] < \*Ifile\*R
+\*Ihunt\*I [\*B-agp\*B]
+[\*B-C\*B\*In\*I]
+[\*B-F\*B[\*Iynd\*I]]
+[\*B-i\*B \*Istring\*I]
+[\*B-l\*B \*In\*I]
+[\*B-o\*B \*Istring\*I]
+[\*B-T\*B[\*Iynd\*I]]
+[\*B-t\*B \*Istring\*I] < \*Ifile\*I
 .US um .H3 DESCRIPTION
 .US ! um .H3 Description
 .PP
-The \*Ihunt\*R program retrieves items from an index. It
+The \*Ihunt\*I program retrieves items from an index. It
 combines, as mentioned above, the two parts of that process:
 search and delivery. The reason why it is efficient to
 combine delivery and search is partly to avoid starting
@@ -63,10 +63,10 @@ retrieving the item again. If there were a separate key
 file, this argument would not apply, but separate key files
 are not common.
 .PP
-Input to \*Ihunt\*R is taken from the standard input, one
-query per line. Each query should be in \*Imkey\*R \*B-s\*R
+Input to \*Ihunt\*I is taken from the standard input, one
+query per line. Each query should be in \*Imkey\*I \*B-s\*B
 output format; all lower case, no punctuation. The
-\*Ihunt\*R program takes one argument which specifies the
+\*Ihunt\*I program takes one argument which specifies the
 base name of the index files to be searched. Only one set of
 index files can be searched at a time, although many text
 files may be indexed as a group, of course. If one of the
@@ -75,45 +75,45 @@ searched with fgrep; this may occasionally slow down the
 searching, and care should be taken to avoid having many out
 of date files.
 .PP
-The following option arguments are recognized by \*Ihunt\*R:
-.PI \*B-a\*R
+The following option arguments are recognized by \*Ihunt\*I:
+.PI \*B-a\*B
 Give all output; ignore checking for false drops.
-.PI \*B-C\*R\*In\*R
-Coordination level \*In\*R; retrieve items with not more
-than \*In\*R terms of the input missing; default
-\*B-C\*R\*I0\*R , implying that each search term must be in the
+.PI \*B-C\*B\*In\*I
+Coordination level \*In\*I; retrieve items with not more
+than \*In\*I terms of the input missing; default
+\*B-C\*B\*I0\*I , implying that each search term must be in the
 output items.
-.PI \*B-F\*R[\*Iynd\*R]
-‘\*B-F\*R\*Iy\*R’ gives the text of all the items found;
-‘\*B-F\*R\*In\*R’’ suppresses them.
-‘\*B-F\*R\*Id\*R’ where \*Id\*R is an integer gives the text of
-the first \*Id\*R items.
-The default is \*B-F\*R\*Iy\*R.
-.PI \*B-g\*R
-Do not use \*Ifgrep\*R to search files changed since the
+.PI \*B-F\*B[\*Iynd\*I]
+‘\*B-F\*B\*Iy\*I’ gives the text of all the items found;
+‘\*B-F\*B\*In\*I’’ suppresses them.
+‘\*B-F\*B\*Id\*I’ where \*Id\*I is an integer gives the text of
+the first \*Id\*I items.
+The default is \*B-F\*B\*Iy\*I.
+.PI \*B-g\*B
+Do not use \*Ifgrep\*I to search files changed since the
 index was made; print an error comment instead.
-.PI "\*B-i\*R \*Istring\*R
-Take \*Istring\*R as input, instead of reading the standard input.
-.PI "\*B-l\*R \*In\*R"
+.PI "\*B-i\*B \*Istring\*I
+Take \*Istring\*I as input, instead of reading the standard input.
+.PI "\*B-l\*B \*In\*I"
 The maximum length of internal lists of candidate items is
-\*In\*R; default is 1000.
-.PI "\*B-o\*R \*Istring\*R"
-Put text output (‘\*BF\*R\*Iy\*R’) in \*Istring\*R; of use only
+\*In\*I; default is 1000.
+.PI "\*B-o\*B \*Istring\*I"
+Put text output (‘\*BF\*B\*Iy\*I’) in \*Istring\*I; of use only
 when invoked from another program.
-.PI \*B-p\*R
+.PI \*B-p\*B
 Print hash code frequencies; mostly for use in optimizing
 hash table sizes.
-.PI \*B-T\*R[\*Iynd\*R]
-‘\*B-T\*R\*Iy\*R’ gives the tags of the items found;
-‘\*B-T\*R\*In\*R’ suppresses them.
-‘\*B-T\*R\*Id\*R’ where \*Id\*R is an integer gives the first
-\*Id\*R tags.
-The default is \*B-T\*R\*In\*R.
-.PI "\*B-t\*R \*Istring\*R"
-Put tag output (‘\*B-T\*R\*Iy\*R’) in string; of use only when
+.PI \*B-T\*B[\*Iynd\*I]
+‘\*B-T\*B\*Iy\*I’ gives the tags of the items found;
+‘\*B-T\*B\*In\*I’ suppresses them.
+‘\*B-T\*B\*Id\*I’ where \*Id\*I is an integer gives the first
+\*Id\*I tags.
+The default is \*B-T\*B\*In\*I.
+.PI "\*B-t\*B \*Istring\*I"
+Put tag output (‘\*B-T\*B\*Iy\*I’) in string; of use only when
 invoked from another program.
 .PP
-The timing of \*Ihunt\*R is complex. Normally the hash table is
+The timing of \*Ihunt\*I is complex. Normally the hash table is
 overfull, so that there will be many false drops on any
 single term; but a multi-term query will have few false
 drops on all terms. Thus if a query is underspecified (one
@@ -132,17 +132,17 @@ uniquely-answered queries into ambiguous queries.
 .US um .H3 FILES
 .US ! um .H3 Files
 .PP
-\*I@BINDIR@/hunt\*R	Executable.
+\*I@BINDIR@/hunt\*I	Executable.
 .US um .H3 LICENSE
 .US ! um .H3 License
 .PP
 The text of this manual page comes from \*ISome application
-of Inverted Indexes in the UNIX System\*R by M. E. Lesk,
+of Inverted Indexes in the UNIX System\*I by M. E. Lesk,
 which is distributed under the
 .LP "original BSD"
 .US ! ux .LL ../share/bsd4.tr
 .US ux .LU @WEBURL@/man/bsd4.html
-license. The software \*Ihunt\*R is distributed under the
+license. The software \*Ihunt\*I is distributed under the
 .LP CDDL-1.0
 .US ! ux .LL ../share/cddl.tr
 .US ux .LU @WEBURL@/man/cddl.html
@@ -173,9 +173,9 @@ license.
 .US ! ux .LL inv.tr
 .US ux .LU @WEBURL@/man/inv.html
 and \*ISome application of Inverted Indexes in the UNIX
-System\*R by M. E. Lesk.
+System\*I by M. E. Lesk.
 .so ../share/bugs.tr
 .US um .H3 AUTHORS
 .US ! um .H3 Authors
 .PP
-M. E. \*CLesk\*R, modified by Pierre-Jean \*CFichet\*R.
+M. E. \*CLesk\*C, modified by Pierre-Jean \*CFichet\*C.
