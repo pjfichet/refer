@@ -25,7 +25,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: glue1.c,v 0.2 2013/03/12 17:20:47 pj Exp pj $
  */
 
 
@@ -201,11 +201,12 @@ huntmain(int argc,char **argv)
 # if D1
 			fprintf(stderr,"Read pointer files\n");
 # endif
-			if (master.a == NULL)
+			if (master.a == NULL) {
 				if (iflong)
 					master.b = zalloc(lmaster, sizeof(long));
 				else
 					master.a = zalloc(lmaster, sizeof(int));
+			}
 			if (master.a == NULL)
 				err("no space for answer list", 0);
 		}
