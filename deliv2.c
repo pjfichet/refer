@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: deliv2.c,v 0.2 2013/03/12 17:20:47 pj Exp pj $
  */
 
 
@@ -38,8 +38,8 @@ int
 hash (const char *s)
 {
 	int c, n;
-	for(n=0; c= *s; s++)
-		n += (c*n+ c << (n%4));
+	for (n=0; (c= *s); s++)
+		n += ( (c*n + c) << (n%4));
 	return(n>0 ? n : -n);
 }
 
