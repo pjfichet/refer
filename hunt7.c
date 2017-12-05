@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: hunt7.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 
@@ -51,7 +51,10 @@ findline(char *in, char **out, int outlen, long indexdate)
 	char *p, **ftp;
 	static FILE *fa = NULL;
 	long lp, llen;
-	int len, k, nofil;
+	int k, nofil;
+# ifdef D1
+	int len;
+# endif
 
 # if D1
 	fprintf(stderr, "findline: %s\n", in);
@@ -134,11 +137,13 @@ findline(char *in, char **out, int outlen, long indexdate)
                 if (*out == NULL) {
                 	return(0);
                 }
-		len = fread(*out, 1, llen, fa);
-		*(*out + llen) = 0;
 # ifdef D1
+		len = fread(*out, 1, llen, fa);
 		fprintf(stderr, "length as read is %d\n",len);
+# else
+		fread(*out, 1, llen, fa);
 # endif
+		*(*out + llen) = 0;
 	}
 	return(llen);
 }
