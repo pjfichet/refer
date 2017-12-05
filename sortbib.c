@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: sortbib.c,v 0.3 2013/03/12 17:42:40 pj Exp pj $
+ * $Id: sortbib.c,v 0.4 2017/12/05 17:06:16 pj Exp pj $
  */
 
 #include <locale.h>
@@ -47,11 +47,13 @@ int isosort = 0;		/* Default sort don't follow iso-690 standart */
 static void sortbib(FILE *, FILE *, int);
 static void deliver(FILE **, FILE *);
 static void parse(char *, char [][BUF]);
-static int article(const char *);
 static void eval(char *);
 static void error(const char *);
 static void onintr(int);
 static int endcomma(char *);
+# ifdef ARTICLE
+static int article(const char *);
+# endif
 
 int
 main(int argc, char **argv)	/* sortbib: sort bibliographic database in place */
@@ -323,9 +325,10 @@ parse(char *line, char fld[][BUF])	/* get fields out of line, prepare for sortin
 					strcat(fld[i], wd[1]);	/* month */
 			} else if (wd[0][1] == 'T' || wd[0][1] == 'J') {
 				j = 1;
-/*				if (article(wd[1]))	// skip article
- *					j++;
- */
+# ifdef ARTICLE
+				if (article(wd[1]))	// skip article
+ 					j++;
+# endif 
 				for (; j < n; j++)
 					strcat(fld[i], wd[j]);
 			} else  /* any other field */
@@ -339,6 +342,7 @@ parse(char *line, char fld[][BUF])	/* get fields out of line, prepare for sortin
 	}
 }
 
+# ifdef ARTICLE
 static int
 article(const char *str)		/* see if string contains an article */
 {
@@ -364,6 +368,7 @@ article(const char *str)		/* see if string contains an article */
 		return (1);
 	return (0);
 }
+# endif
 
 static void
 eval(char *keystr)		/* evaluate key string for A+ marking */
