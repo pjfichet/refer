@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: sortbib.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: sortbib.c,v 0.3 2013/03/12 17:42:40 pj Exp pj $
  */
 
 #include <locale.h>
@@ -173,7 +173,7 @@ sortbib(FILE *fp, FILE *tfp, int i)	/* read records, prepare list for sorting */
 						fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s\n",
 							i, lastoffset, length,
 							fld[0], fld[1], fld[3], fld[4],
-							fld[2]);
+							fld[5], fld[2]);
 					}
 				}
 				else {
@@ -227,7 +227,7 @@ sortbib(FILE *fp, FILE *tfp, int i)	/* read records, prepare list for sorting */
 				fprintf(tfp, "%d %ld %d : %s %s %s %s %s %s\n",
 					i, lastoffset, length,
 					fld[0], fld[1], fld[3], fld[4],
-					fld[2]);
+					fld[5], fld[2]);
 			}
 		}
 		else {
@@ -290,7 +290,7 @@ static void
 parse(char *line, char fld[][BUF])	/* get fields out of line, prepare for sorting */
 {
 	char wd[8][BUF/4];
-	int n, i, j, k;
+	int n, i, j;
 
 	for (i = 0; i < 8; i++)		/* zap out old strings */
 		*wd[i] = 0;
