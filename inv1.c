@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: inv1.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 
@@ -125,7 +125,7 @@ main(int argc, char **argv)
 	fb = 0;
 	if (appflg )
 	{
-		if (fb = fopen(nmb, "r"))
+		if ( (fb = fopen(nmb, "r")) )
 		{
 			snprintf(tmpb, sizeof tmpb, "junk%dj", (int)getpid());
 			ftb = fopen(tmpb, "w");

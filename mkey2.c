@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: mkey2.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 
@@ -52,7 +52,7 @@ dofile(FILE *f, char *name)
 
 	lp=0;
 	if (wholefile==0)
-		while (lim = grec(line,f))
+		while ( (lim = grec(line,f)) )
 		{
 # if D1
 			fprintf(stderr, "line: /%s",line);

@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: hunt5.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
  */
 
 
@@ -60,7 +60,7 @@ result(unsigned *mptr, int nf, FILE *fc)
 		lp = iflong ? master.b[i] : master.a[i];
 		fseek(fc,lp, SEEK_SET);
 		fgets(res, sizeof res, fc);
-		for(s=res; c = *s; s++)
+		for(s=res; (c = *s) ; s++)
 			if (c== ';')
 			{
 				*s=0;

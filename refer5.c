@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer5.c,v 0.4 2013/03/12 18:32:35 pj Exp pj $
+ * $Id: refer5.c,v 0.5 2013/03/12 20:32:46 pj Exp pj $
  */
 
 #include <string.h>
@@ -246,7 +246,7 @@ putkey(int nf, char **flds, int nref, char *keystr)
 	if (nf <= 0)
 		fprintf(fo, "%s%c%c", labtab[nref], labc[nref], sep);
 	else {
-		while (ctype = *keystr++) {
+		while ( (ctype = *keystr++) ) {
 			count = atoi(keystr);
 			if (*keystr=='+')
 				count=999;
@@ -312,7 +312,7 @@ isoputkey(int nf, char **flds, int nref, char *keystr)
 			if (flds[i][1] == 'B')
 				keystr = "QA+TE+SVB"; // inbook
 		}
-		while (ctype = *keystr++) {
+		while ( (ctype = *keystr++) ) {
 			count = atoi(keystr);
 			if (*keystr=='+')
 				count=999;

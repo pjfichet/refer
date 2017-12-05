@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer2.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: refer2.c,v 0.3 2013/03/12 18:02:54 pj Exp pj $
  */
 
 #include "refer..c"
@@ -136,7 +136,7 @@ doref(char *line1)
 			*++p = 0;
 		case 1:
 			if (endpush)
-				if (nr = chkdup(answer)) {
+				if ( (nr = chkdup(answer)) ) {
 					if (bare < 2) {
 						nf = tabs(flds, one);
 						nf += tabs(flds+nf, dbuff);
@@ -175,7 +175,7 @@ newline(const char *s)
 {
 	int k = 0, c;
 
-	while (c = *s++)
+	while ( (c = *s++) )
 		if (c == '\n')
 		k++;
 	return(k);
