@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id$
+ * $Id: glue4.c,v 0.2 2013/03/12 17:20:47 pj Exp pj $
  */
 
 
@@ -47,7 +47,8 @@ grepcall (char *in, char *out, char *arg)
 	char line[200], *s, argig[100], *cv[50];
 	char *inp, inb[500];
 	FILE *gf;
-	int c, oldc = 0, alph = 0, nv = 0;
+	int c, alph = 0, nv = 0;
+	// int oldc = 0;
 	int sv0, sv1;
 	strcpy (argig, arg); 
 	strcat(argig, ".ig");
@@ -57,7 +58,7 @@ grepcall (char *in, char *out, char *arg)
 # if D1
 	fprintf(stderr, "in grepcall, gfile %s in %o out %o\n", gfile,in,out);
 # endif
-	for(cv[nv++] = "fgrep"; c = *inp; inp++)
+	for(cv[nv++] = "fgrep"; (c = *inp) ; inp++)
 	{
 		if (c== ' ')
 			c = *inp = 0;
@@ -68,7 +69,7 @@ grepcall (char *in, char *out, char *arg)
 			cv[nv++] = inp;
 		if (alph > 6)
 			*inp = 0;
-		oldc=c;
+		//oldc=c;
 	}
 # if D1
 	fprintf(stderr, "%d args set up\n", nv);
