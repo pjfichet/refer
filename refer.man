@@ -1,0 +1,251 @@
+.\"
+.\" DI $Id: refer.tr,v 1.20 2014/03/22 20:21:02 pj Exp pj $
+.\" DA M. E. Lesk
+.\" DS Utroff refer manual
+.\" DT Utroff refer manual
+.\" DK utroff refer hunt inv mkey troff nroff heirloom tmac xml
+.
+.
+.
+.TH REFER 1 '2017‐12‐06'
+.
+.
+.
+.SH NAME
+.PP
+\fBrefer\fR - (utroff) insert iso‐690 compliant references
+in document
+.
+.
+.
+.SH SYNOPSIS
+.PP
+\fB@BINDIR@/refer\fR
+[\fB-abcdeinPS\fR]
+[\fB-f\fR\fIn\fR]
+[\fB-k\fR\fIx\fR]
+[\fB-l\fR\fIm\fR\fB,\fR\fIn\fR]
+[\fB-p\fR \fIbib\fR]
+[\fB-s\fR\fIkeys\fR]
+[\fB-B\fR\fIl\fR\fB.\fR\fIm\fR]
+[\fIfile\fR ...]
+.
+.
+.
+.SH DESCRIPTION
+.PP
+\fIRefer\fR is an enhancement of the \fIHeirloom refer\fR preprocessor
+for \fInroff\fR and \fItroff\fR that finds and formats
+references for footnotes or endnotes. It is also the base
+for a series of programs designed to index, search, sort,
+and print stand‐alone bibliographies, or other data entered
+in the appropriate form.
+.PP
+This version adds to \fIHeirloom refer\fR the ability to sort following
+the \fIiso‐690\fR(7) bibliography standart (\fB‐i\fR
+option), a better capitalize option (\fB‐d\fR), support
+editor names like authors names, and insertion of the
+universal "&" instead of the english "and" to join names.
+.PP
+Given an incomplete citation with sufficiently precise
+keywords, \fIrefer\fR will search a bibliographic database for
+references containing these keywords anywhere in the title,
+author, journal, etc. The input file (or standard input) is
+copied to standard output, except for lines between \fB.[\fR
+and \fB.]\fR delimiters, which are assumed to contain
+keywords, and are replaced by information from the
+bibliographic database. The user may also search different
+databases, override particular fields, or add new fields.
+The reference data, from whatever source, are assigned to a
+set of \fItroff\fR strings. Macro packages such as \fIms\fR
+print the finished reference text from these strings. By
+default references are flagged by footnote numbers.
+.PP
+The following options are available:
+.TP
+\&\fB-a\fR \fIn\fR
+Reverse the first \fIn\fR author or editor names (Jones, J.
+A. instead of J. A. Jones). If \fIn\fR is omitted all author
+and editor names are reversed.
+.TP
+\&\fB-b\fR
+Bare mode: do not put any flags in text (neither numbers nor
+labels).
+.TP
+\&\fB-c\fR \fIkeys\fR
+Capitalize (with Caps Small Caps) the
+whole field whose key‐letters are in the firstname part of
+fields whose key‐letters are in \fIkeys\fR. The firstname
+part is the last word of the fields or the previous one if
+it ends with a comma (",").
+.TP
+\&\fB-d\fR \fIkeys\fR
+Insert strings around the lastname, firstname and junior
+part of fields whose key‐letters are in \fIkeys\fR, for
+later formatting. The firstname part is the last word of the
+field or the previous one if it ends with a comma (",").
+Strings are
+\Ee*(+F and \Ee*(‐F around firstname,
+\Ee*(+L and \Ee*(‐L around lastname,
+\Ee*(+J and \Ee*(‐J around junior.
+.TP
+\&\fB-e\fR
+Instead of leaving the references where encountered,
+accumulate them until a sequence of the form
+.PP
+.EX
+\fB.\fR\fB[\fR
+$LIST$
+\fB.\fR\fB]\fR
+is encountered, and then write out all references collected
+so far. Collapse references to same source.
+.EE
+.TP
+\&\fB-f\fR \fIn\fR
+Set the footnote number to \fIn\fR instead of the default of
+1 (one). With labels rather than numbers, this flag is a
+no‐op.
+.TP
+\&\fI-i\fR
+Sort following the iso‐690 standart order of fields: If
+\fBJ\fR is defined, the order of fields is "\fBQATESVBJ\fR";
+Else, if \fBB\fR is defined, the order of fields is
+"\fBQATESVB\fR"; Else, the order of fields is
+"\fBQAESVT\fR". The \fIu‐ref\fR macro need this option to
+work properly.
+.TP
+\&\fB-k\fR \fIx\fR
+Instead of numbering references, use labels as specified in
+a reference data line beginning \fI%x\fR; by default \fIx\fR
+is \fBL\fR.
+.TP
+\&\fB-l\fR \fIm , n\fR
+Instead of numbering references, use labels made from the
+senior author’s last name and the year of publication. Only
+the first \fIm\fR letters of the last name and the last
+\fIn\fR digits of the date are used. If either \fIm\fR or
+\fIn\fR is omitted the entire name or date respectively is
+used.
+.TP
+\&\fB-n\fR
+Do not search the default file \fB/$REFLIB$/papers/Ind\fR.
+If there is a \fBREFER\fR environment variable, the
+specified file will be searched instead of the default file;
+in this case the \fB-n\fR flag has no effect.
+.TP
+\&\fB-p\fR \fIbib\fR
+Take the next argument \fIbib\fR as a file of references to
+be searched. The default file is searched last.
+.TP
+\&\fB-s\fR \fIkeys\fR
+Sort references by fields whose key‐letters are in the
+\fIkeys\fR string; permute reference numbers in text
+accordingly. Implies \fB-e\fR. The key‐letters in
+\fIkeys\fR may be followed by a number to indicate how many
+such fields are used, with \fB+\fR taken as a very large
+number. The default is \fBAD\fR which sorts on the senior
+author and then date; to sort, for example, on all authors
+and then title, use \fB‐sA+T\fR.
+.TP
+\&\fB-B\fR \fIl.m\fR
+Bibliography mode. Take a file composed of records
+separated by blank lines, and turn them into \fItroff\fR
+input. Label \fIl\fR will be turned into the macro \fI.m\fR
+with \fIl\fR defaulting to \fB%X\fR and \fI.m\fR defaulting
+to \fB.AP\fR (annotation paragraph).
+.TP
+\&\fB-P\fR
+Place punctuation marks .,:;?! after the reference signal,
+rather than before. (Periods and commas used to be done
+with strings.)
+.TP
+\&\fB-S\fR
+Produce references in the Natural or Social Science format.
+.PP
+To use your own references, put them in the format described
+below. They can be searched more rapidly by running
+\fIindxbib\fR(1B) on them before using \fIrefer\fR; failure
+to index results in a linear search. When \fIrefer\fR is used
+with the \fIeqn\fR, \fIneqn\fR or \fItbl\fR preprocessors
+\fIrefer\fR should be first, to minimize the volume of data
+passed through pipes.
+.PP
+The \fIrefer\fR preprocessor and associated programs expect
+input from a file of references composed of records
+separated by blank lines. A record is a set of lines
+(fields), each containing one kind of information. Fields
+start on a line beginning with a ’\fB%\fR’, followed by a
+key‐letter, then a blank, and finally the contents of the
+field, and continue until the next line starting with
+’\fB%\fR’. The output ordering and formatting of fields
+is controlled by the macros specified for \fInroff/troff\fR
+(for footnotes and endnotes) or \fIroffbib\fR (for
+stand‐alone bibliographies). For a list of the most common
+key‐letters and their corresponding fields, see
+\fIaddbib\fR(1B). An example of a \fIrefer\fR entry is given
+below.
+.
+.
+.
+.SH EXAMPLE
+.PP
+.EX
+\fB%A\fR        M.\fB \fRE.\fB \fRLesk
+\fB%T\fR        Some\fB \fRApplications\fB \fRof\fB \fRInverted\fB \fRIndexes\fB \fRon\fB \fRthe\fB \fRUNIX\fB \fRSystem
+\fB%B\fR        UNIX\fB \fRProgrammer’s\fB \fRManual
+\fB%V\fR        2b
+\fB%I\fR        Bell\fB \fRLaboratories
+\fB%C\fR        Murray\fB \fRHill,\fB \fRNJ
+\fB%D\fR        1978
+.EE
+.
+.
+.
+.SH FILES
+.PP
+@REFDIR@/papers directory of default publication lists
+@REFDIR@ directory of companion programs
+.
+.
+.
+.SH SEE ALSO
+.PP
+\&referformat(7) <referformat.tr>,
+\&sortbib(1) <sortbib.tr>,
+\&mkey(1) <mkey.tr>,
+\&inv(1) <inv.tr>,
+\&hunt(1) <hunt.tr>,
+and \fISome application of Inverted Indexes in the UNIX
+System\fR by M. E. Lesk.
+.
+.
+.
+.SH NOTES
+.PP
+Blank spaces at the end of lines in bibliography fields
+will cause the records to sort and reverse incorrectly.
+Sorting large numbers of references causes a core dump.
+.
+.
+.
+.SH LICENSE
+.PP
+\fIRefer\fR is distributed under the
+\&CDDL‐1.0 <../share/cddl.tr>
+license.
+This manual page is distributed under the
+\&original BSD <../share/bsd4.tr>
+license.
+.
+.
+.
+.SH BUGS & HELP
+.PP
+Please, send questions, bugs and patches at help at utroff dot org.
+.
+.
+.
+.SH AUTHORS
+.PP
+Written by Mike Lesk, modified by Pierre‐Jean
+Fichet.

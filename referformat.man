@@ -1,0 +1,310 @@
+.\"
+.\" DI $Id: referformat.tr,v 1.11 2014/03/22 20:32:00 pj Exp pj $
+.\" DA M. E. Lesk
+.\" DS Utroff refer format manual
+.\" DT Utroff refer format manual
+.\" DK utroff refer format troff nroff heirloom tmac xml
+.
+.
+.
+.TH REFER‐FORMAT 7 '2017‐12‐06'
+.
+.
+.
+.SH REFER FILE
+.PP
+A reference file is a set of bibliographic references usable
+with \fIrefer\fR. It can be indexed using the
+softwares \fIinv\fR and \fImkey\fR for fast searching.
+.PP
+The strings defined by \fIrefer\fR are taken directly from
+the files of references, which are in the following format.
+The references should be separated by blank lines. Each
+reference is a sequence of lines beginning with \fB%\fR and
+followed by a key‐letter. The remainder of that line, and
+successive lines until the next line beginning with \fB%\fR,
+contain the information specified by the key‐letter. In
+general, \fIrefer\fR does not interpret the information, but
+merely presents it to the macro package for final
+formatting. A user with a separate macro package, for
+example, can add new key‐letters or use the existing ones
+for other purposes without bothering \fIrefer\fR.
+.PP
+The meaning of the key‐letters given below, in particular,
+is that assigned by the –ms macros. Not all information,
+obviously, is used with each citation. For example, if a
+document is both an internal memorandum and a journal
+article, the macros ignore the memorandum version and cite
+only the journal article. Some kinds of information are not
+used at all in printing the reference; if a user does not
+like finding references by specifying title or author
+keywords, and prefers to add specific keywords to the
+citation, a field is available which is searched but not
+printed (K).
+.PP
+The key letters currently recognized by \fIrefer\fR and –ms,
+with the kind of information implied, are:
+.TP
+\&\fBA\fR
+Author’s name
+.TP
+\&\fBB\fR
+Title of book containing item
+.TP
+\&\fBC\fR
+City of publication
+.TP
+\&\fBD\fR
+Date
+.TP
+\&\fBE\fR
+Editor of book containing item
+.TP
+\&\fBG\fR
+Government (NTIS) ordering number
+.TP
+\&\fBI\fR
+Issuer (publisher)
+.TP
+\&\fBJ\fR
+Journal name
+.TP
+\&\fBK\fR
+Keys (for searching)
+.TP
+\&\fBL\fR
+Label
+.TP
+\&\fBM\fR
+Memorandum label
+.TP
+\&\fBN\fR
+Issue number
+.TP
+\&\fBO\fR
+Other information
+.TP
+\&\fBP\fR
+Page(s) of article
+.TP
+\&\fBR\fR
+Technical report reference
+.TP
+\&\fBT\fR
+Title
+.TP
+\&\fBV\fR
+Volume number
+.TP
+\&\fBX\fR
+or
+.TP
+\&\fBY\fR
+or
+.TP
+\&\fBZ\fR
+Information not used by refer
+.
+.
+.
+.SH REFER OUTPUT
+.PP
+The output of \fIrefer\fR is a stream of string definitions,
+one for each of the fields of each reference, as shown
+below.
+.PP
+.EX
+\fB.\fR\fB]‐\fR
+\fB.\fR\fBds\fR \fB[A\fR \fIauthors’ names ...\fR
+\fB.\fR\fBds\fR \fB[T\fR \fItitle ...\fR
+\fB.\fR\fBds\fR \fB[J\fR \fIjournal ...\fR
+\fB.\fR\fB..\fR
+\fB.\fR\fB][\fR type‐number
+.EE
+.PP
+The \fIrefer\fR program, in general, does not concern itself
+with the significance of the strings. The different fields
+are treated identically by refer , except that the \fBX\fR,
+\fBY\fR and \fBZ\fR fields are ignored (see the \fB‐i\fR
+option of \fImkey\fR) in indexing and searching. All
+\fIrefer\fR does is select the appropriate citation, based
+on the keys. The macro package must arrange the strings so
+as to produce an appropriately formatted citation. In this
+process, it uses the convention that the ’\fBT\fR’ field is
+the title, the ’\fBJ\fR’ field the journal, and so forth.
+The refer program does arrange the citation to simplify the
+macro package’s job, however. The special macro \fB.]‐\fR
+precedes the string definitions and the special macro
+\fB.][\fR follows. These are changed from the input
+\fB.[\fR and \fB.]\fR so that running the same file
+through refer again is harmless.
+.PP
+The \fB.]–\fR macro can be used by the macro package to
+initialize. The \fB.][\fR macro, which should be used to
+print the reference, is given an argument type‐number to
+indicate the kind of reference, as follows:
+
+.TP
+\&\fB1\fR
+Journal article
+.TP
+\&\fB2\fR
+Book
+.TP
+\&\fB3\fR
+Article within book
+.TP
+\&\fB4\fR
+Technical report
+.TP
+\&\fB5\fR
+Bell Labs technical memorandum
+.TP
+\&\fB0\fR
+Other
+.PP
+The type is determined by the presence or absence of
+particular fields in the citation (a journal article must
+have a ’\fBJ\fR’ field, a book must have an ’\fBI\fR’ field, and so
+forth). To a small extent, this violates the above rule that
+\fIrefer\fR does not concern itself with the contents of the
+citation; however, the classification of the citation in
+\fItroff\fR macros would require a relatively expensive and
+obscure program. Any macro writer may, of course, preserve
+consistency by ignoring the argument to the .] [ macro. The
+reference is flagged in the text with the sequence
+.PP
+.EX
+\fB\Ee*(\fR\fI[.\fRnumber\fB\Ee*(\fR\fI.]\fR
+.EE
+.PP
+where number is the footnote number. The strings \fB[.\fR
+and \fB.]\fR should be used by the macro package to format
+the reference flag in the text. These strings can be
+replaced for a particular footnote. The footnote number (or
+other signal) is available to the reference macro
+\fB.][\fR as the string register \fB[F\fR. To simplify
+dealing with a text reference that occurs at the end of a
+sentence, refer treats a reference which follows a period in
+a special way. The period is removed, and the reference is
+preceded by a call for the string \fB<.\fR and followed by a
+call for the string \fB>.\fR For example, if a reference
+follows ’\fIend.\fR’ it will appear as
+.PP
+.EX
+end\fB\Ee*(\fR\fI<.\fR\fB\Ee*(\fR\fI[.\fRnumber\fB\Ee*(\fR\fI.]\fR\fB\Ee*(\fR\fI>.\fR
+.EE
+.PP
+where number is the footnote number. The macro package
+should turn either the string \fB>.\fR or \fB<.\fR into a
+period and delete the other one. This permits the output to
+have either the form ’\fIend[31].\fR’ or ’\fIend.31\fR’ as
+the macro package wishes. Note that in one case the period
+precedes the number and in the other it follows the number.
+.PP
+In some cases users wish to suspend the searching, and
+merely use the reference macro formatting. That is, the
+user doesn’t want to provide a search key between .[ and . ]
+brackets, but merely the reference lines for the appropriate
+document. Alternatively, the user can wish to add a few
+fields to those in the reference as in the standard file, or
+override some fields. Altering or replacing fields, or
+supplying whole references, is easily done by inserting
+lines beginning with \fB%\fR; any such line is taken as
+direct input to the reference processor rather than keys to
+be searched. Thus
+.PP
+.EX
+\fB.\fR\fB[\fR
+key1 key2 key3 ...
+%Q New format item
+%R Override report name
+\fB.\fR\fB]\fR
+.EE
+.PP
+makes the indicates changes to the result of searching for
+the keys. All of the search keys must be given before the
+first \fB%\fR line. If no search keys are provided, an
+entire citation can be provided in‐line in the text. For
+example, if the eqn paper citation were to be inserted in
+this way, rather than by searching for it in the data base,
+the input would read
+.PP
+.EX
+\fB.\fR\fB[\fR
+%A B. W. Kernighan
+%A L. L. Cherry
+%T A System for Typesetting Mathematics
+%J Comm. ACM
+%V 18
+%N 3
+%P 151‐157
+%D March 1975
+\fB.\fR\fB]\fR
+.EE
+.PP
+This would produce a citation of the same appearance as that
+resulting from the file search. As shown, fields are
+normally turned into troff strings. Sometimes users would
+rather have them defined as macros, so that other troff
+commands can be placed into the data. When this is
+necessary, simply double the control character % in the
+data. Thus the input
+.PP
+.EX
+\fB.\fR\fB[\fR
+%V 23
+%%M
+Bell Laboratories,
+Murray Hill, N.J. 07974
+\fB.\fR\fB]\fR
+.EE
+.PP
+is processed by refer into
+.PP
+.EX
+\fB.\fR\fBds\fR \fB[V\fR \fI23\fR
+\fB.\fR\fBde\fR \fB[M\fR
+Bell Laboratories,
+Murray Hill, N.J. 07974
+\fB.\fR\fB.\fR
+.EE
+.PP
+The information after \fB%%M\fR is defined as a macro to be
+invoked by \fB.[M\fR while the information after \fB%V\fR
+is turned into a string to be invoked by \fB\Ee*([V\fR. At
+present ‐ms expects all information as strings.
+.
+.
+.
+.SH LICENSE
+.PP
+The text of this manual page comes from \fISome application
+of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
+which is distributed under the
+\&original BSD <../share/bsd4.tr>
+license.
+.
+.
+.
+.SH SEE ALSO
+.PP
+\&refer(1) <refer.tr>,
+\&sortbib(1) <sortbib.tr>,
+\&mkey(1) <mkey.tr>,
+\&inv(1) <inv.tr>,
+\&hunt(1) <hunt.tr>,
+and \fISome application of Inverted Indexes in the UNIX
+System\fR by M. E. Lesk.
+.
+.
+.
+.SH BUGS & HELP
+.PP
+Please, send questions, bugs and patches at help at utroff dot org.
+.
+.
+.
+.SH AUTHORS
+.PP
+M. E. Lesk. Modified by Pierre‐Jean Fichet.

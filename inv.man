@@ -1,0 +1,141 @@
+.\"
+.\" DI $Id: inv.tr,v 1.11 2014/03/22 20:37:48 pj Exp pj $
+.\" DA M. E. Lesk
+.\" DS Utroff inv manual
+.\" DT Utroff inv manual
+.\" DK utroff inv refer troff nroff heirloom tmac xml
+.
+.
+.
+.TH INV 1 '2017‐12‐06'
+.
+.
+.
+.SH NAME
+.PP
+\fIInv\fR — Make an inverted index from output of mkey.
+.
+.
+.
+.SH SYNOPSIS
+.PP
+\fIinv\fR [\fB-danpv\fR]
+[\fB‐h\fR\fIn\fR]
+[\fB‐i\fR [\fBu\fR] \fIname\fR] \fIoutfile\fR]
+.
+.
+.
+.SH DESCRIPTION
+.PP
+The \fIinv\fR program computes the hash codes and writes the
+inverted files. It reads the output of \fImkey\fR and writes
+the set of files described earlier in this section. It
+expects one argument, which is used as the base name for the
+three (or four) files to be written.  Assuming an argument
+of \fIIndex\fR (the default) the entry file is named
+\fIIndex.ia\fR, the posting file \fIIndex.ib\fR, the tag
+file \fIIndex.ic\fR, and the key file (if present)
+\fIindex.id\fR.
+.PP
+The inv programm recognize the following options:
+.TP
+\&\fB‐a\fR
+Append the new keys to a previous set of inverted files,
+making new files if there is no old set using the same base
+name.
+.TP
+\&\fB‐d\fR
+Write the optional key file. This is needed when you can not
+check for false drops by looking for the keys in the
+original inputs, i.e.  when the key derivation procedure is
+complicated and the output keys are not words from the input
+files.
+.TP
+\&\fB‐h\fR\fIn\fR
+The hash table size is \fIn\fR (default 997); \fIn\fR should
+be prime. Making \fIn\fR bigger saves search time and spends
+disk space.
+.TP
+\&\fB‐i\fR [\fBu\fR] \fIname\fR
+Take input from file \fIname\fR, instead of the standard
+input; if \fBu\fR is present name is unlinked when the sort
+is started. Using this option permits the sort scratch space
+to overlap the disk space used for input keys.
+.TP
+\&\fB‐n\fR
+Make a completely new set of inverted files, ignoring previous files.
+.TP
+\&\fB‐p\fR
+Pipe into the sort program, rather than writing a temporary
+input file. This saves disk space and spends processor
+time.
+.TP
+\&\fB‐v\fR
+Verbose mode; print a summary of the number of keys which
+finished indexing.
+.PP
+About half the time used in inv is in the contained sort.
+Assuming the sort is roughly linear, however, a guess at the
+total timing for inv is 250 keys per second. The space used
+is usually of more importance: the entry file uses four
+bytes per possible hash (note the \fB‐h\fR option), and the tag
+file around 15‐20 bytes per item indexed. Roughly, the
+posting file contains one item for each key instance and one
+item for each possible hash code; the items are two bytes
+long if the tag file is less than 65336 bytes long, and the
+items are four bytes wide if the tag file is greater than
+65536 bytes long. To minimize storage, the hash tables
+should be over‐full; for most of the files indexed in this
+way, there is no other real choice, since the entry file
+must fit in memory.
+.
+.
+.
+.SH FILES
+.PP
+\fI@BINDIR@/inv\fR      Executable.
+Assuming an argument of \fIIndex\fR (the default):
+\fIIndex.ia\fR Entry file.
+\fIIndex.ib\fR Posting file.
+\fIIndex.ic\fR Tag file.
+\fIIndex.id\fR Key file.
+.
+.
+.
+.SH LICENSE
+.PP
+The text of this manual page comes from \fISome application
+of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
+which is distributed under the
+\&original BSD <../share/bsd4.tr>
+license. The
+\fIinv\fR software is distributed under the
+\&CDDL‐1.0 <../share/cddl.tr>
+license.
+.
+.
+.
+.SH SEE ALSO
+.PP
+\&refer(1) <refer.tr>,
+\&referformat(7) <referformat.tr>,
+\&mkey(1) <mkey.tr>,
+\&hunt(1) <hunt.tr>,
+and \fISome application of Inverted Indexes in the UNIX
+System\fR by M. E. Lesk.
+.
+.
+.
+.SH BUGS & HELP
+.PP
+Please, send questions, bugs and patches at help at utroff dot org.
+.
+.
+.
+.SH AUTHORS
+.
+.
+.
+.SH Authors
+.PP
+M. E. Lesk. Modified by Pierre‐Jean Fichet

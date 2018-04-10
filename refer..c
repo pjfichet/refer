@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: refer..c,v 0.3 2013/03/12 18:03:08 pj Exp pj $
+ * $Id: refer..c,v 0.4 2013/03/12 18:28:25 pj Exp pj $
  */
 
 #include <stdio.h>

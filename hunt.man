@@ -1,0 +1,171 @@
+.\"
+.\" DI $Id: hunt.tr,v 1.12 2014/03/22 20:36:10 pj Exp pj $
+.\" DA M. E. Lesk
+.\" DS Utroff hunt manual
+.\" DT Utroff hunt manual
+.\" DK utroff hunt refer troff nroff heirloom tmac xml
+.
+.
+.
+.TH HUNT 1 '2017‐12‐06'
+.
+.
+.
+.SH NAME
+.PP
+\fIhunt\fR — Retrieve items from an \fImkey\fR index.
+.
+.
+.
+.SH SYNOPSIS
+.PP
+\fIhunt\fR [\fB‐agp\fR]
+[\fB‐C\fR\fIn\fR]
+[\fB‐F\fR[\fIynd\fR]]
+[\fB‐i\fR \fIstring\fR]
+[\fB‐l\fR \fIn\fR]
+[\fB‐o\fR \fIstring\fR]
+[\fB‐T\fR[\fIynd\fR]]
+[\fB‐t\fR \fIstring\fR] < \fIfile\fR
+.
+.
+.
+.SH DESCRIPTION
+.PP
+The \fIhunt\fR program retrieves items from an index. It
+combines, as mentioned above, the two parts of that process:
+search and delivery. The reason why it is efficient to
+combine delivery and search is partly to avoid starting
+unnecessary processes, and partly because the delivery
+operation must be a part of the search operation in any
+case. Because of the hashing, the search part takes place in
+two stages: first items are retrieved which have the right
+hash codes associated with them, and then the actual items
+are inspected to determine false drops, i.e. to determine if
+anything with the right hash codes doesn’t really have the
+right keys. Since the original item is retrieved to check on
+false drops, it is efficient to present it immediately,
+rather than only giving the tag as output and later
+retrieving the item again. If there were a separate key
+file, this argument would not apply, but separate key files
+are not common.
+.PP
+Input to \fIhunt\fR is taken from the standard input, one
+query per line. Each query should be in \fImkey\fR \fB‐s\fR
+output format; all lower case, no punctuation. The
+\fIhunt\fR program takes one argument which specifies the
+base name of the index files to be searched. Only one set of
+index files can be searched at a time, although many text
+files may be indexed as a group, of course. If one of the
+text files has been changed since the index, that file is
+searched with fgrep; this may occasionally slow down the
+searching, and care should be taken to avoid having many out
+of date files.
+.PP
+The following option arguments are recognized by \fIhunt\fR:
+.TP
+\&\fB‐a\fR
+Give all output; ignore checking for false drops.
+.TP
+\&\fB‐C\fR\fIn\fR
+Coordination level \fIn\fR; retrieve items with not more
+than \fIn\fR terms of the input missing; default
+\fB‐C\fR\fI0\fR , implying that each search term must be in the
+output items.
+.TP
+\&\fB‐F\fR[\fIynd\fR]
+"\fB‐F\fR\fIy\fR" gives the text of all the items found;
+"\fB‐F\fR\fIn\fR" suppresses them.
+"\fB‐F\fR\fId\fR" where \fId\fR is an integer gives the text of
+the first \fId\fR items.
+The default is \fB‐F\fR\fIy\fR.
+.TP
+\&\fB‐g\fR
+Do not use \fIfgrep\fR to search files changed since the
+index was made; print an error comment instead.
+.TP
+\&\fB‐i\fR \fIstring\fR
+Take \fIstring\fR as input, instead of reading the standard input.
+.TP
+\&\fB‐l\fR \fIn\fR
+The maximum length of internal lists of candidate items is
+\fIn\fR; default is 1000.
+.TP
+\&\fB‐o\fR \fIstring\fR
+Put text output ("\fBF\fR\fIy\fR") in \fIstring\fR; of use only
+when invoked from another program.
+.TP
+\&\fB‐p\fR
+Print hash code frequencies; mostly for use in optimizing
+hash table sizes.
+.TP
+\&\fB‐T\fR[\fIynd\fR]
+"\fB‐T\fR\fIy\fR" gives the tags of the items found;
+"\fB‐T\fR\fIn\fR" suppresses them.
+"\fB‐T\fR\fId\fR" where \fId\fR is an integer gives the first
+\fId\fR tags.
+The default is \fB‐T\fR\fIn\fR.
+.TP
+\&\fB‐t\fR \fIstring\fR
+Put tag output ("\fB‐T\fR\fIy\fR") in string; of use only when
+invoked from another program.
+.PP
+The timing of \fIhunt\fR is complex. Normally the hash table is
+overfull, so that there will be many false drops on any
+single term; but a multi‐term query will have few false
+drops on all terms. Thus if a query is underspecified (one
+search term) many potential items will be examined and
+discarded as false drops, wasting time. If the query is
+overspecified (a dozen search terms) many keys will be
+examined only to verify that the single item under
+consideration has that key posted.
+.PP
+As would be expected, the optimal search is achieved when
+the query just specifies the answer; however,
+overspecification is quite cheap. In general,
+overspecification can be recommended; it protects the user
+against additions to the data base which turn previously
+uniquely‐answered queries into ambiguous queries.
+.
+.
+.
+.SH FILES
+.PP
+\fI@BINDIR@/hunt\fR     Executable.
+.
+.
+.
+.SH LICENSE
+.PP
+The text of this manual page comes from \fISome application
+of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
+which is distributed under the
+\&original BSD <../share/bsd4.tr>
+license. The software \fIhunt\fR is distributed under the
+\&CDDL‐1.0 <../share/cddl.tr>
+license.
+.
+.
+.
+.SH SEE ALSO
+.PP
+\&refer(1) <refer.tr>,
+\&referformat(7) <referformat.tr>,
+\&sortbib(1) <sortbib.tr>,
+\&hunt(1) <hunt.tr>,
+\&mkey(1) <mkey.tr>,
+\&inv(1) <inv.tr>,
+and \fISome application of Inverted Indexes in the UNIX
+System\fR by M. E. Lesk.
+.
+.
+.
+.SH BUGS & HELP
+.PP
+Please, send questions, bugs and patches at help at utroff dot org.
+.
+.
+.
+.SH AUTHORS
+.PP
+M. E. Lesk, modified by Pierre‐Jean Fichet.

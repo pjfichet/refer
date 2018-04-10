@@ -24,7 +24,7 @@
 /*
  * Portions Copyright (c) 2012 Pierre-Jean Fichet, Amiens, France
  *
- * $Id: hunt7.c,v 0.2 2013/03/12 17:20:48 pj Exp pj $
+ * $Id: hunt7.c,v 0.3 2017/12/05 17:09:57 pj Exp pj $
  */
 
 

@@ -1,0 +1,128 @@
+.\"
+.\" DI $Id: mkey.tr,v 1.11 2014/03/21 09:20:06 pj Exp pj $
+.\" DA M. E. Lesk
+.\" DS Utroff mkey manual
+.\" DT Utroff mkey manual
+.\" DK utroff mkey refer troff nroff heirloom tmac xml
+.
+.
+.
+.TH MKEY 1 '2017‐12‐06'
+.
+.
+.
+.SH NAME
+.PP
+\fBMkey\fR — Build an index of keys from files
+.
+.
+.
+.SH SYNOPSIS
+.PP
+\fBmkey\fR [\fB‐sw\fR]
+[\fB‐c\fR \fIname\fR]
+[\fB‐f\fR \fIname\fR]
+[\fB‐i\fR \fIchars\fR]
+[\fB‐k\fR\fIn\fR]
+[\fB‐l\fR\fIn\fR]
+[\fB‐n\fR\fIm\fR]
+\fIfile\fR [\fIfile...\fR]
+.
+.
+.
+.SH DESCRIPTION
+.PP
+\fBMkey\fR reads its input from the file names given as
+arguments, and, if there is no arguments, it reads from the
+standart input. It assumes that blank lines in the input
+delimit separate items for each of which a different line of
+\fBkeys\fR should be generated. The lines of keys are
+written on the standard output. \fBKeys\fR are any
+alphanumeric string in the input not among the most frequent
+words in English and not entirely numeric (except that
+all‐numeric strings are acceptable if they are between 1900
+and 1999). In the output, keys are translated to lower case,
+and truncated to six characters in length; any associated
+punctuation is removed.
+.PP
+The following flags arguments are recognized by \fBmkey\fR.
+.TP
+\&\fB‐c\fR \fIname\fR
+Name of file of common words. Default is
+\fI@LIBDIR@/eign\fR.
+.TP
+\&\fB‐f\fR \fIname\fR
+Read a list of files from \fIname\fR and take each as an
+input argument.
+.TP
+\&\fB‐i\fR \fIchars\fR
+Ignore each line wich begin with ’\fB%\fR’ followed by any
+character in \fIchars\fR.
+.TP
+\&\fB‐k\fR\fIn\fR
+Use at most \fIn\fR keys per input item. Unless this option
+is used, the output of \fBmkey\fR is comparable in size to
+its input.
+.TP
+\&\fB‐l\fR\fIn\fR
+Ignore items shorter than \fIn\fR letter longs. Default is
+3.
+.TP
+\&\fB‐n\fR\fIm\fR
+Ignore as a key any word in the first \fIm\fR words of the
+list of common English words. The default is 100.
+.TP
+\&\fB‐s\fR
+Remove the labels (\fIfile:start,length\fR) from the output;
+just give the keys. Used when searching rather than
+indexing.
+.TP
+\&\fB‐w\fR
+Each whole file is a separate item; blank lines are
+irrelevant.
+.
+.
+.
+.SH FILES
+.PP
+\fI@BINDIR@/mkey\fR     Executable.
+\fI@LIBDIR@/eign\fR     List of frequent english words.
+.
+.
+.
+.SH LICENSE
+.PP
+The text of this manual page comes from \fISome application
+of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
+which is distributed under the
+\&original BSD <../share/bsd4.tr>
+license. The
+software \fImkey\fR is distributed under the
+\&CDDL‐1.0 <../share/cddl.tr>
+license.
+.
+.
+.
+.SH SEE ALSO
+.PP
+\&refer(1) <refer.tr>,
+\&referformat(7) <referformat.tr>,
+\&sortbib(1) <sortbib.tr>,
+\&inv(1) <inv.tr>,
+\&hunt(1) <hunt.tr>,
+and \fISome application of Inverted Indexes in the UNIX
+System\fR by M. E. Lesk.
+.
+.
+.
+.SH BUGS & HELP
+.PP
+Please, send questions, bugs and patches at help at utroff dot org.
+.
+.
+.
+.SH AUTHORS
+.PP
+This manual page is made from the document \fISome
+application of Inverted Indexes in the UNIX System\fR by M.
+E. Lesk. Modified by Pierre‐Jean Fichet
