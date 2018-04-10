@@ -1,11 +1,11 @@
-# Refer readme
-################
+Urefer - Manages references for Troff
+=====================================
 
 # Presentation
-==============
+--------------
 
 Utroff refer is a modification of the heirloom refer tools which
-manage references for troff. The modification had three aims :
+manage references for troff. The modification had three aims:
 
   - Follow the iso-690 bibliography standart.
   - Add better support of names in bibliography files (support
@@ -13,37 +13,28 @@ manage references for troff. The modification had three aims :
   - Add some manual pages.
 
 # Build
-=======
+-------
 
-To build and install, run :
+To build and install, run:
 
     make
     make install
 
-To uninstall and clean, run :
+To uninstall and clean, run:
 
     make uninstall
     make clean
 
-
 # License
-=========
+---------
 
 Refer and the other binaries are distributed under the CDDL 1.0
-license <LICENSE-cddl>.  The manual pages of refer and sortbib
-are distributed under the original BSD license <LICENSE-bsd4>.
-The manual pages of hunt, inv, mkey and referformat have been
-made from Some applications of inverted indexes on the Unix
-system by M. E. Lesk, which was part of the Unix User
-Supplementary Document
+license (LICENSE-cddl).  The manual pages of refer and sortbib are
+distributed under the original BSD license (LICENSE-bsd4).  The manual
+pages of hunt, inv, mkey and referformat have been made from Some
+applications of inverted indexes on the Unix system by M. E. Lesk,
+which was part of the Unix User Supplementary Document
 <http://netbsd.org/docs/bsd/lite2/usd.html> distributed under the
-original BSD license <LICENSE-bsd4>, as said on the Berkely
-Software Documentation <http://netbsd.org/docs/bsd/lite2/>
-webpage.
-
-# Help and bugs
-===============
-
-You can send questions, bugs and patches at help at utroff dot
-org.
+original BSD license (LICENSE-bsd4), as said on the Berkely Software
+Documentation page <http://netbsd.org/docs/bsd/lite2/>.
 
