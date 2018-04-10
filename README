@@ -1,4 +1,4 @@
-Urefer - Manages references for Troff
+Refer - Manages references for Troff
 =====================================
 
 # Presentation
@@ -8,12 +8,17 @@ Utroff refer is a modification of the heirloom refer tools which
 manage references for troff. The modification had three aims:
 
   - Follow the iso-690 bibliography standart.
-  - Add better support of names in bibliography files (support
+  - Add a better support of names in bibliography files (support
     multiple issuer, use real small capitals).
   - Add some manual pages.
 
-# Build
--------
+# Build and installation
+------------------------
+
+This version of refer could override other implementation of
+refer if installed in the same directory. It is nonetheless
+considered compatible with heirloom refer, and can safely
+override it.
 
 To build and install, run:
 
