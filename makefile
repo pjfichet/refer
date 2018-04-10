@@ -1,16 +1,16 @@
 # Packaging directory
 DESTDIR=
 # Prefix directory
-PREFIX=/opt/utroff
+PREFIX=/usr/local
 # Where to place binaries
 # and where to find utroff tools
 BINDIR=$(PREFIX)/bin
 # Where to place manuals
 MANDIR=$(PREFIX)/man
 # Where to place libraries
-LIBDIR=$(PREFIX)/lib
+LIBDIR=$(PREFIX)/share
 # Where to place refer utilities
-REFDIR=$(LIBDIR)/refer
+REFDIR=$(LIBDIR)/urefer
 
 # Install binary
 INSTALL = /usr/bin/install
@@ -33,7 +33,7 @@ CPPFLAGS=-D_GNU_SOURCE
 # Strip
 STRIP=strip -s -R .comment -R .note
 
-BIN=refer sortbib
+BIN=urefer usortbib
 REF=hunt inv mkey
 MAN1=hunt.1 inv.1 mkey.1 refer.1 sortbib.1
 MAN7=referformat.7
@@ -82,10 +82,10 @@ inv: $(IOBJ)
 mkey: $(MOBJ)
 	$(CC) $(LDFLAGS) $(MOBJ) $(LIBS) -o $@
 
-refer: $(ROBJ)
+urefer: $(ROBJ)
 	$(CC) $(LDFLAGS) $(ROBJ) $(LIBS) -o $@
 
-sortbib: $(SOBJ)
+usortbib: $(SOBJ)
 	$(CC) $(LDFLAGS) $(SOBJ) $(LIBS) -o $@
 
 %.1 %.7: %.man
@@ -94,22 +94,20 @@ sortbib: $(SOBJ)
 
 
 
-$(DESTDIR)$(BINDIR) \
-$(DESTDIR)$(REFDIR) \
-$(DESTDIR)$(MANDIR)/man1 \
-$(DESTDIR)$(MANDIR)/man7:
-	test -d $@ || mkdir -p $@
-
-$(DESTDIR)$(MANDIR)/man1/%: % $(DESTDIR)$(MANDIR)/man1
+$(DESTDIR)$(MANDIR)/man1/%: %
+	test -d $(DESTDIR)$(MANDIR)/man1 || mkdir -p $(DESTDIR)$(MANDIR)/man1
 	$(INSTALL) -c -m 644 $< $@
 
-$(DESTDIR)$(MANDIR)/man7/%: % $(DESTDIR)$(MANDIR)/man7
+$(DESTDIR)$(MANDIR)/man7/%: %
+	test -d  $(DESTDIR)$(MANDIR)/man7 || mkdir -p $(DESTDIR)$(MANDIR)/man7
 	$(INSTALL) -c -m 644 $< $@
 
-$(DESTDIR)$(BINDIR)/%: % $(DESTDIR)$(BINDIR)
+$(DESTDIR)$(BINDIR)/%: %
+	test -d $(DESTDIR)$(BINDIR) || mkdir -p $(DESTDIR)$(BINDIR)
 	$(INSTALL) -c $< $@
 
-$(DESTDIR)$(REFDIR)/%: % $(DESTDIR)$(REFDIR)
+$(DESTDIR)$(REFDIR)/%: %
+	test -d $(DESTDIR)$(REFDIR) || mkdir -p $(DESTDIR)$(REFDIR)
 	$(INSTALL) -c $< $@
 
 
