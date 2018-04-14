@@ -1,30 +1,40 @@
-.\" Originaly written by M. E. Lesk
 .\"
-.\" Redistribution and use in source and binary forms, with or without
-.\" modification, are permitted provided that the following conditions
-.\" are met:
-.\" 1. Redistributions of source code must retain the above copyright
-.\"    notice, this list of conditions and the following disclaimer.
-.\" 2. Redistributions in binary form must reproduce the above copyright
-.\"    notice, this list of conditions and the following disclaimer in the
-.\"    documentation and/or other materials provided with the distribution.
-.\"
-.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-.\" SUCH DAMAGE.
-.\"
+.ig
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+ must display the following acknowedgement:
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
+4. Neither the name of the University nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ‘‘AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+..
+.\" DA M. E. Lesk
+.\" DS Utroff hunt manual
+.\" DT Utroff hunt manual
+.\" DK utroff hunt refer troff nroff heirloom tmac xml
 .
 .
 .
-.TH HUNT 1 '2017‐12‐06'
+.TH HUNT 1 2018-04-14
 .
 .
 .
@@ -36,14 +46,14 @@
 .
 .SH SYNOPSIS
 .PP
-\fIhunt\fR [\fB‐agp\fR]
-[\fB‐C\fR\fIn\fR]
-[\fB‐F\fR[\fIynd\fR]]
-[\fB‐i\fR \fIstring\fR]
-[\fB‐l\fR \fIn\fR]
-[\fB‐o\fR \fIstring\fR]
-[\fB‐T\fR[\fIynd\fR]]
-[\fB‐t\fR \fIstring\fR] < \fIfile\fR
+\fIhunt\fR [\fB-agp\fR]
+[\fB-C\fR\fIn\fR]
+[\fB-F\fR[\fIynd\fR]]
+[\fB-i\fR \fIstring\fR]
+[\fB-l\fR \fIn\fR]
+[\fB-o\fR \fIstring\fR]
+[\fB-T\fR[\fIynd\fR]]
+[\fB-t\fR \fIstring\fR] < \fIfile\fR
 .
 .
 .
@@ -68,7 +78,7 @@ file, this argument would not apply, but separate key files
 are not common.
 .PP
 Input to \fIhunt\fR is taken from the standard input, one
-query per line. Each query should be in \fImkey\fR \fB‐s\fR
+query per line. Each query should be in \fImkey\fR \fB-s\fR
 output format; all lower case, no punctuation. The
 \fIhunt\fR program takes one argument which specifies the
 base name of the index files to be searched. Only one set of
@@ -81,55 +91,55 @@ of date files.
 .PP
 The following option arguments are recognized by \fIhunt\fR:
 .TP
-\&\fB‐a\fR
+\&\fB-a\fR
 Give all output; ignore checking for false drops.
 .TP
-\&\fB‐C\fR\fIn\fR
+\&\fB-C\fR\fIn\fR
 Coordination level \fIn\fR; retrieve items with not more
 than \fIn\fR terms of the input missing; default
-\fB‐C\fR\fI0\fR , implying that each search term must be in the
+\fB-C\fR\fI0\fR , implying that each search term must be in the
 output items.
 .TP
-\&\fB‐F\fR[\fIynd\fR]
-"\fB‐F\fR\fIy\fR" gives the text of all the items found;
-"\fB‐F\fR\fIn\fR" suppresses them.
-"\fB‐F\fR\fId\fR" where \fId\fR is an integer gives the text of
+\&\fB-F\fR[\fIynd\fR]
+"\fB-F\fR\fIy\fR" gives the text of all the items found;
+"\fB-F\fR\fIn\fR" suppresses them.
+"\fB-F\fR\fId\fR" where \fId\fR is an integer gives the text of
 the first \fId\fR items.
-The default is \fB‐F\fR\fIy\fR.
+The default is \fB-F\fR\fIy\fR.
 .TP
-\&\fB‐g\fR
+\&\fB-g\fR
 Do not use \fIfgrep\fR to search files changed since the
 index was made; print an error comment instead.
 .TP
-\&\fB‐i\fR \fIstring\fR
+\&\fB-i\fR \fIstring\fR
 Take \fIstring\fR as input, instead of reading the standard input.
 .TP
-\&\fB‐l\fR \fIn\fR
+\&\fB-l\fR \fIn\fR
 The maximum length of internal lists of candidate items is
 \fIn\fR; default is 1000.
 .TP
-\&\fB‐o\fR \fIstring\fR
+\&\fB-o\fR \fIstring\fR
 Put text output ("\fBF\fR\fIy\fR") in \fIstring\fR; of use only
 when invoked from another program.
 .TP
-\&\fB‐p\fR
+\&\fB-p\fR
 Print hash code frequencies; mostly for use in optimizing
 hash table sizes.
 .TP
-\&\fB‐T\fR[\fIynd\fR]
-"\fB‐T\fR\fIy\fR" gives the tags of the items found;
-"\fB‐T\fR\fIn\fR" suppresses them.
-"\fB‐T\fR\fId\fR" where \fId\fR is an integer gives the first
+\&\fB-T\fR[\fIynd\fR]
+"\fB-T\fR\fIy\fR" gives the tags of the items found;
+"\fB-T\fR\fIn\fR" suppresses them.
+"\fB-T\fR\fId\fR" where \fId\fR is an integer gives the first
 \fId\fR tags.
-The default is \fB‐T\fR\fIn\fR.
+The default is \fB-T\fR\fIn\fR.
 .TP
-\&\fB‐t\fR \fIstring\fR
-Put tag output ("\fB‐T\fR\fIy\fR") in string; of use only when
+\&\fB-t\fR \fIstring\fR
+Put tag output ("\fB-T\fR\fIy\fR") in string; of use only when
 invoked from another program.
 .PP
 The timing of \fIhunt\fR is complex. Normally the hash table is
 overfull, so that there will be many false drops on any
-single term; but a multi‐term query will have few false
+single term; but a multi-term query will have few false
 drops on all terms. Thus if a query is underspecified (one
 search term) many potential items will be examined and
 discarded as false drops, wasting time. If the query is
@@ -142,7 +152,7 @@ the query just specifies the answer; however,
 overspecification is quite cheap. In general,
 overspecification can be recommended; it protects the user
 against additions to the data base which turn previously
-uniquely‐answered queries into ambiguous queries.
+uniquely-answered queries into ambiguous queries.
 .
 .
 .
@@ -157,32 +167,25 @@ uniquely‐answered queries into ambiguous queries.
 The text of this manual page comes from \fISome application
 of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
 which is distributed under the
-\&original BSD <../share/bsd4.tr>
-license. The software \fIhunt\fR is distributed under the
-\&CDDL‐1.0 <../share/cddl.tr>
-license.
+bsd4 license.
+The software \fIhunt\fR is distributed under the
+cddl license.
 .
 .
 .
 .SH SEE ALSO
 .PP
-\&refer(1) <refer.tr>,
-\&referformat(7) <referformat.tr>,
-\&sortbib(1) <sortbib.tr>,
-\&hunt(1) <hunt.tr>,
-\&mkey(1) <mkey.tr>,
-\&inv(1) <inv.tr>,
+refer(1),
+referformat(7),
+sortbib(1),
+hunt(1),
+mkey(1),
+inv(1),
 and \fISome application of Inverted Indexes in the UNIX
 System\fR by M. E. Lesk.
 .
 .
 .
-.SH BUGS & HELP
-.PP
-Please, send questions, bugs and patches at help at utroff dot org.
-.
-.
-.
 .SH AUTHORS
 .PP
-M. E. Lesk, modified by Pierre‐Jean Fichet.
+M. E. Lesk, modified by Pierre-Jean Fichet.

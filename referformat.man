@@ -1,29 +1,40 @@
-.\" Originaly written by M. E. Lesk
 .\"
-.\" Redistribution and use in source and binary forms, with or without
-.\" modification, are permitted provided that the following conditions
-.\" are met:
-.\" 1. Redistributions of source code must retain the above copyright
-.\"  notice, this list of conditions and the following disclaimer.
-.\" 2. Redistributions in binary form must reproduce the above copyright
-.\"  notice, this list of conditions and the following disclaimer in the
-.\"  documentation and/or other materials provided with the distribution.
-.\"
-.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-.\" ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-.\" SUCH DAMAGE.
+.ig
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+ must display the following acknowedgement:
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
+4. Neither the name of the University nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ‘‘AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+..
+.\" DA M. E. Lesk
+.\" DS Utroff refer format manual
+.\" DT Utroff refer format manual
+.\" DK utroff refer format troff nroff heirloom tmac xml
 .
 .
 .
-.TH REFER‐FORMAT 7 '2017‐12‐06'
+.TH REFER-FORMAT 7 2018-04-14
 .
 .
 .
@@ -37,16 +48,16 @@ The strings defined by \fIrefer\fR are taken directly from
 the files of references, which are in the following format.
 The references should be separated by blank lines. Each
 reference is a sequence of lines beginning with \fB%\fR and
-followed by a key‐letter. The remainder of that line, and
+followed by a key-letter. The remainder of that line, and
 successive lines until the next line beginning with \fB%\fR,
-contain the information specified by the key‐letter. In
+contain the information specified by the key-letter. In
 general, \fIrefer\fR does not interpret the information, but
 merely presents it to the macro package for final
 formatting. A user with a separate macro package, for
-example, can add new key‐letters or use the existing ones
+example, can add new key-letters or use the existing ones
 for other purposes without bothering \fIrefer\fR.
 .PP
-The meaning of the key‐letters given below, in particular,
+The meaning of the key-letters given below, in particular,
 is that assigned by the –ms macros. Not all information,
 obviously, is used with each citation. For example, if a
 document is both an internal memorandum and a journal
@@ -130,26 +141,26 @@ one for each of the fields of each reference, as shown
 below.
 .PP
 .EX
-\fB.\fR\fB]‐\fR
+\fB.\fR\fB]-\fR
 \fB.\fR\fBds\fR \fB[A\fR \fIauthors’ names ...\fR
 \fB.\fR\fBds\fR \fB[T\fR \fItitle ...\fR
 \fB.\fR\fBds\fR \fB[J\fR \fIjournal ...\fR
 \fB.\fR\fB..\fR
-\fB.\fR\fB][\fR type‐number
+\fB.\fR\fB][\fR type-number
 .EE
 .PP
 The \fIrefer\fR program, in general, does not concern itself
 with the significance of the strings. The different fields
 are treated identically by refer , except that the \fBX\fR,
-\fBY\fR and \fBZ\fR fields are ignored (see the \fB‐i\fR
+\fBY\fR and \fBZ\fR fields are ignored (see the \fB-i\fR
 option of \fImkey\fR) in indexing and searching. All
 \fIrefer\fR does is select the appropriate citation, based
 on the keys. The macro package must arrange the strings so
 as to produce an appropriately formatted citation. In this
-process, it uses the convention that the ’\fBT\fR’ field is
-the title, the ’\fBJ\fR’ field the journal, and so forth.
+process, it uses the convention that the '\fBT\fR’ field is
+the title, the '\fBJ\fR’ field the journal, and so forth.
 The refer program does arrange the citation to simplify the
-macro package’s job, however. The special macro \fB.]‐\fR
+macro package’s job, however. The special macro \fB.]-\fR
 precedes the string definitions and the special macro
 \fB.][\fR follows. These are changed from the input
 \fB.[\fR and \fB.]\fR so that running the same file
@@ -157,7 +168,7 @@ through refer again is harmless.
 .PP
 The \fB.]–\fR macro can be used by the macro package to
 initialize. The \fB.][\fR macro, which should be used to
-print the reference, is given an argument type‐number to
+print the reference, is given an argument type-number to
 indicate the kind of reference, as follows:
 
 .TP
@@ -181,7 +192,7 @@ Other
 .PP
 The type is determined by the presence or absence of
 particular fields in the citation (a journal article must
-have a ’\fBJ\fR’ field, a book must have an ’\fBI\fR’ field, and so
+have a '\fBJ\fR’ field, a book must have an '\fBI\fR’ field, and so
 forth). To a small extent, this violates the above rule that
 \fIrefer\fR does not concern itself with the contents of the
 citation; however, the classification of the citation in
@@ -191,7 +202,7 @@ consistency by ignoring the argument to the .] [ macro. The
 reference is flagged in the text with the sequence
 .PP
 .EX
-\fB\Ee*(\fR\fI[.\fRnumber\fB\Ee*(\fR\fI.]\fR
+\fB\e*(\fR\fI[.\fRnumber\fB\e*(\fR\fI.]\fR
 .EE
 .PP
 where number is the footnote number. The strings \fB[.\fR
@@ -205,16 +216,16 @@ sentence, refer treats a reference which follows a period in
 a special way. The period is removed, and the reference is
 preceded by a call for the string \fB<.\fR and followed by a
 call for the string \fB>.\fR For example, if a reference
-follows ’\fIend.\fR’ it will appear as
+follows '\fIend.\fR’ it will appear as
 .PP
 .EX
-end\fB\Ee*(\fR\fI<.\fR\fB\Ee*(\fR\fI[.\fRnumber\fB\Ee*(\fR\fI.]\fR\fB\Ee*(\fR\fI>.\fR
+end\fB\e*(\fR\fI<.\fR\fB\e*(\fR\fI[.\fRnumber\fB\e*(\fR\fI.]\fR\fB\e*(\fR\fI>.\fR
 .EE
 .PP
 where number is the footnote number. The macro package
 should turn either the string \fB>.\fR or \fB<.\fR into a
 period and delete the other one. This permits the output to
-have either the form ’\fIend[31].\fR’ or ’\fIend.31\fR’ as
+have either the form '\fIend[31].\fR’ or '\fIend.31\fR’ as
 the macro package wishes. Note that in one case the period
 precedes the number and in the other it follows the number.
 .PP
@@ -241,7 +252,7 @@ key1 key2 key3 ...
 makes the indicates changes to the result of searching for
 the keys. All of the search keys must be given before the
 first \fB%\fR line. If no search keys are provided, an
-entire citation can be provided in‐line in the text. For
+entire citation can be provided in-line in the text. For
 example, if the eqn paper citation were to be inserted in
 this way, rather than by searching for it in the data base,
 the input would read
@@ -254,7 +265,7 @@ the input would read
 %J Comm. ACM
 %V 18
 %N 3
-%P 151‐157
+%P 151-157
 %D March 1975
 \fB.\fR\fB]\fR
 .EE
@@ -288,8 +299,8 @@ Murray Hill, N.J. 07974
 .PP
 The information after \fB%%M\fR is defined as a macro to be
 invoked by \fB.[M\fR while the information after \fB%V\fR
-is turned into a string to be invoked by \fB\Ee*([V\fR. At
-present ‐ms expects all information as strings.
+is turned into a string to be invoked by \fB\e*([V\fR. At
+present -ms expects all information as strings.
 .
 .
 .
@@ -298,29 +309,22 @@ present ‐ms expects all information as strings.
 The text of this manual page comes from \fISome application
 of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
 which is distributed under the
-\&original BSD <../share/bsd4.tr>
-license.
+bsd4 license.
 .
 .
 .
 .SH SEE ALSO
 .PP
-\&refer(1) <refer.tr>,
-\&sortbib(1) <sortbib.tr>,
-\&mkey(1) <mkey.tr>,
-\&inv(1) <inv.tr>,
-\&hunt(1) <hunt.tr>,
+refer(1),
+sortbib(1),
+mkey(1),
+inv(1),
+hunt(1),
 and \fISome application of Inverted Indexes in the UNIX
 System\fR by M. E. Lesk.
 .
 .
 .
-.SH BUGS & HELP
-.PP
-Please, send questions, bugs and patches at help at utroff dot org.
-.
-.
-.
 .SH AUTHORS
 .PP
-M. E. Lesk. Modified by Pierre‐Jean Fichet.
+M. E. Lesk. Modified by Pierre-Jean Fichet.

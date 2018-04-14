@@ -1,29 +1,40 @@
-.\" Originaly written by M. E. Lesk
 .\"
-.\" Redistribution and use in source and binary forms, with or without
-.\" modification, are permitted provided that the following conditions
-.\" are met:
-.\" 1. Redistributions of source code must retain the above copyright
-.\"    notice, this list of conditions and the following disclaimer.
-.\" 2. Redistributions in binary form must reproduce the above copyright
-.\"    notice, this list of conditions and the following disclaimer in the
-.\"    documentation and/or other materials provided with the distribution.
-.\"
-.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-.\" SUCH DAMAGE.
+.ig
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+ must display the following acknowedgement:
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
+4. Neither the name of the University nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ‘‘AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+..
+.\" DA M. E. Lesk
+.\" DS Utroff mkey manual
+.\" DT Utroff mkey manual
+.\" DK utroff mkey refer troff nroff heirloom tmac xml
 .
 .
 .
-.TH MKEY 1 '2017‐12‐06'
+.TH MKEY 1 2018-04-14
 .
 .
 .
@@ -35,13 +46,13 @@
 .
 .SH SYNOPSIS
 .PP
-\fBmkey\fR [\fB‐sw\fR]
-[\fB‐c\fR \fIname\fR]
-[\fB‐f\fR \fIname\fR]
-[\fB‐i\fR \fIchars\fR]
-[\fB‐k\fR\fIn\fR]
-[\fB‐l\fR\fIn\fR]
-[\fB‐n\fR\fIm\fR]
+\fBmkey\fR [\fB-sw\fR]
+[\fB-c\fR \fIname\fR]
+[\fB-f\fR \fIname\fR]
+[\fB-i\fR \fIchars\fR]
+[\fB-k\fR\fIn\fR]
+[\fB-l\fR\fIn\fR]
+[\fB-n\fR\fIm\fR]
 \fIfile\fR [\fIfile...\fR]
 .
 .
@@ -56,44 +67,44 @@ delimit separate items for each of which a different line of
 written on the standard output. \fBKeys\fR are any
 alphanumeric string in the input not among the most frequent
 words in English and not entirely numeric (except that
-all‐numeric strings are acceptable if they are between 1900
+all-numeric strings are acceptable if they are between 1900
 and 1999). In the output, keys are translated to lower case,
 and truncated to six characters in length; any associated
 punctuation is removed.
 .PP
 The following flags arguments are recognized by \fBmkey\fR.
 .TP
-\&\fB‐c\fR \fIname\fR
+\&\fB-c\fR \fIname\fR
 Name of file of common words. Default is
 \fI@LIBDIR@/eign\fR.
 .TP
-\&\fB‐f\fR \fIname\fR
+\&\fB-f\fR \fIname\fR
 Read a list of files from \fIname\fR and take each as an
 input argument.
 .TP
-\&\fB‐i\fR \fIchars\fR
-Ignore each line wich begin with ’\fB%\fR’ followed by any
+\&\fB-i\fR \fIchars\fR
+Ignore each line wich begin with '\fB%\fR' followed by any
 character in \fIchars\fR.
 .TP
-\&\fB‐k\fR\fIn\fR
+\&\fB-k\fR\fIn\fR
 Use at most \fIn\fR keys per input item. Unless this option
 is used, the output of \fBmkey\fR is comparable in size to
 its input.
 .TP
-\&\fB‐l\fR\fIn\fR
+\&\fB-l\fR\fIn\fR
 Ignore items shorter than \fIn\fR letter longs. Default is
 3.
 .TP
-\&\fB‐n\fR\fIm\fR
+\&\fB-n\fR\fIm\fR
 Ignore as a key any word in the first \fIm\fR words of the
 list of common English words. The default is 100.
 .TP
-\&\fB‐s\fR
+\&\fB-s\fR
 Remove the labels (\fIfile:start,length\fR) from the output;
 just give the keys. Used when searching rather than
 indexing.
 .TP
-\&\fB‐w\fR
+\&\fB-w\fR
 Each whole file is a separate item; blank lines are
 irrelevant.
 .
@@ -111,29 +122,21 @@ irrelevant.
 The text of this manual page comes from \fISome application
 of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
 which is distributed under the
-\&original BSD <../share/bsd4.tr>
-license. The
-software \fImkey\fR is distributed under the
-\&CDDL‐1.0 <../share/cddl.tr>
-license.
+bsd4 license
+The software \fImkey\fR is distributed under the
+cddl license.
 .
 .
 .
 .SH SEE ALSO
 .PP
-\&refer(1) <refer.tr>,
-\&referformat(7) <referformat.tr>,
-\&sortbib(1) <sortbib.tr>,
-\&inv(1) <inv.tr>,
-\&hunt(1) <hunt.tr>,
+refer(1),
+referformat(7),
+sortbib(1),
+inv(1),
+hunt(1),
 and \fISome application of Inverted Indexes in the UNIX
 System\fR by M. E. Lesk.
-.
-.
-.
-.SH BUGS & HELP
-.PP
-Please, send questions, bugs and patches at help at utroff dot org.
 .
 .
 .
@@ -141,4 +144,4 @@ Please, send questions, bugs and patches at help at utroff dot org.
 .PP
 This manual page is made from the document \fISome
 application of Inverted Indexes in the UNIX System\fR by M.
-E. Lesk. Modified by Pierre‐Jean Fichet
+E. Lesk. Modified by Pierre-Jean Fichet

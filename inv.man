@@ -1,29 +1,40 @@
-.\" Originaly written by M. E. Lesk
 .\"
-.\" Redistribution and use in source and binary forms, with or without
-.\" modification, are permitted provided that the following conditions
-.\" are met:
-.\" 1. Redistributions of source code must retain the above copyright
-.\"    notice, this list of conditions and the following disclaimer.
-.\" 2. Redistributions in binary form must reproduce the above copyright
-.\"    notice, this list of conditions and the following disclaimer in the
-.\"    documentation and/or other materials provided with the distribution.
-.\"
-.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-.\" SUCH DAMAGE.
+.ig
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+ must display the following acknowedgement:
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
+4. Neither the name of the University nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ‘‘AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+..
+.\" DA M. E. Lesk
+.\" DS Utroff inv manual
+.\" DT Utroff inv manual
+.\" DK utroff inv refer troff nroff heirloom tmac xml
 .
 .
 .
-.TH INV 1 '2017‐12‐06'
+.TH INV 1 2018-04-14
 .
 .
 .
@@ -35,9 +46,9 @@
 .
 .SH SYNOPSIS
 .PP
-\fIinv\fR [\fB-danpv\fR]
-[\fB‐h\fR\fIn\fR]
-[\fB‐i\fR [\fBu\fR] \fIname\fR] \fIoutfile\fR]
+\fIinv\fR [\fB−danpv\fR]
+[\fB-h\fR\fIn\fR]
+[\fB-i\fR [\fBu\fR] \fIname\fR] \fIoutfile\fR]
 .
 .
 .
@@ -47,7 +58,7 @@ The \fIinv\fR program computes the hash codes and writes the
 inverted files. It reads the output of \fImkey\fR and writes
 the set of files described earlier in this section. It
 expects one argument, which is used as the base name for the
-three (or four) files to be written.  Assuming an argument
+three (or four) files to be written. Assuming an argument
 of \fIIndex\fR (the default) the entry file is named
 \fIIndex.ia\fR, the posting file \fIIndex.ib\fR, the tag
 file \fIIndex.ic\fR, and the key file (if present)
@@ -55,38 +66,38 @@ file \fIIndex.ic\fR, and the key file (if present)
 .PP
 The inv programm recognize the following options:
 .TP
-\&\fB‐a\fR
+\&\fB-a\fR
 Append the new keys to a previous set of inverted files,
 making new files if there is no old set using the same base
 name.
 .TP
-\&\fB‐d\fR
+\&\fB-d\fR
 Write the optional key file. This is needed when you can not
 check for false drops by looking for the keys in the
-original inputs, i.e.  when the key derivation procedure is
+original inputs, i.e. when the key derivation procedure is
 complicated and the output keys are not words from the input
 files.
 .TP
-\&\fB‐h\fR\fIn\fR
+\&\fB-h\fR\fIn\fR
 The hash table size is \fIn\fR (default 997); \fIn\fR should
 be prime. Making \fIn\fR bigger saves search time and spends
 disk space.
 .TP
-\&\fB‐i\fR [\fBu\fR] \fIname\fR
+\&\fB-i\fR [\fBu\fR] \fIname\fR
 Take input from file \fIname\fR, instead of the standard
 input; if \fBu\fR is present name is unlinked when the sort
 is started. Using this option permits the sort scratch space
 to overlap the disk space used for input keys.
 .TP
-\&\fB‐n\fR
+\&\fB-n\fR
 Make a completely new set of inverted files, ignoring previous files.
 .TP
-\&\fB‐p\fR
+\&\fB-p\fR
 Pipe into the sort program, rather than writing a temporary
 input file. This saves disk space and spends processor
 time.
 .TP
-\&\fB‐v\fR
+\&\fB-v\fR
 Verbose mode; print a summary of the number of keys which
 finished indexing.
 .PP
@@ -94,14 +105,14 @@ About half the time used in inv is in the contained sort.
 Assuming the sort is roughly linear, however, a guess at the
 total timing for inv is 250 keys per second. The space used
 is usually of more importance: the entry file uses four
-bytes per possible hash (note the \fB‐h\fR option), and the tag
-file around 15‐20 bytes per item indexed. Roughly, the
+bytes per possible hash (note the \fB-h\fR option), and the tag
+file around 15-20 bytes per item indexed. Roughly, the
 posting file contains one item for each key instance and one
 item for each possible hash code; the items are two bytes
 long if the tag file is less than 65336 bytes long, and the
 items are four bytes wide if the tag file is greater than
 65536 bytes long. To minimize storage, the hash tables
-should be over‐full; for most of the files indexed in this
+should be over-full; for most of the files indexed in this
 way, there is no other real choice, since the entry file
 must fit in memory.
 .
@@ -123,35 +134,24 @@ Assuming an argument of \fIIndex\fR (the default):
 The text of this manual page comes from \fISome application
 of Inverted Indexes in the UNIX System\fR by M. E. Lesk,
 which is distributed under the
-\&original BSD <../share/bsd4.tr>
-license. The
+bsd4 license.
+The
 \fIinv\fR software is distributed under the
-\&CDDL‐1.0 <../share/cddl.tr>
-license.
+cddl license.
 .
 .
 .
 .SH SEE ALSO
 .PP
-\&refer(1) <refer.tr>,
-\&referformat(7) <referformat.tr>,
-\&mkey(1) <mkey.tr>,
-\&hunt(1) <hunt.tr>,
+refer(1),
+referformat(7),
+mkey(1),
+hunt(1),
 and \fISome application of Inverted Indexes in the UNIX
 System\fR by M. E. Lesk.
 .
 .
 .
-.SH BUGS & HELP
-.PP
-Please, send questions, bugs and patches at help at utroff dot org.
-.
-.
-.
 .SH AUTHORS
-.
-.
-.
-.SH Authors
 .PP
-M. E. Lesk. Modified by Pierre‐Jean Fichet
+M. E. Lesk. Modified by Pierre-Jean Fichet

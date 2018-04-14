@@ -1,84 +1,89 @@
-.\" Originaly written by M. E. Lesk
 .\"
-.\"	from 4.3BSD-Tahoe hrefer.1	6.2 (Berkeley) 5/12/86
-.\"
-.\" This code contains changes by
-.\"   Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved.
-.\"
-.\" Conditions 1, 2, and 4 and the no-warranty notice below apply
-.\" to these changes.
-.\"
-.\" Redistribution and use in source and binary forms, with or without
-.\" modification, are permitted provided that the following conditions
-.\" are met:
-.\" 1. Redistributions of source code must retain the above copyright
-.\"  notice, this list of conditions and the following disclaimer.
-.\" 2. Redistributions in binary form must reproduce the above copyright
-.\"  notice, this list of conditions and the following disclaimer in the
-.\"  documentation and/or other materials provided with the distribution.
-.\" 3. All advertising materials mentioning features or use of this software
-.\"  must display the following acknowedgement:
-.\" 	This product includes software developed by the University of
-.\" 	California, Berkeley and its contributors.
-.\" 4. Neither the name of the University nor the names of its contributors
-.\"  may be used to endorse or promote products derived from this software
-.\"  without specific prior written permission.
-.\"
-.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-.\" ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-.\" SUCH DAMAGE.
-.\"
-.\" Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
-.\"
-.\" Redistribution and use in source and binary forms, with or without
-.\" modification, are permitted provided that the following conditions
-.\" are met:
-.\"  Redistributions of source code and documentation must retain the
-.\"  above copyright notice, this list of conditions and the following
-.\"  disclaimer.
-.\"  Redistributions in binary form must reproduce the above copyright
-.\"  notice, this list of conditions and the following disclaimer in the
-.\"  documentation and/or other materials provided with the distribution.
-.\"  All advertising materials mentioning features or use of this software
-.\"  must display the following acknowledgement:
-.\"   This product includes software developed or owned by Caldera
-.\"   International, Inc.
-.\"  Neither the name of Caldera International, Inc. nor the names of
-.\"  other contributors may be used to endorse or promote products
-.\"  derived from this software without specific prior written permission.
-.\"
-.\" USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA
-.\" INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR
-.\" IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-.\" WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-.\" ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE
-.\" LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR
-.\" CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-.\" SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-.\" BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-.\" WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-.\" OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-.\" EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-.\"
-.\" Sccsid @(#)refer.1b	1.4 (gritter) 12/12/05
+.ig
+from 4.3BSD-Tahoe hrefer.1      6.2 (Berkeley) 5/12/86
+
+This code contains changes by
+  Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved.
+
+Conditions 1, 2, and 4 and the no-warranty notice below apply
+to these changes.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+ must display the following acknowedgement:
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
+4. Neither the name of the University nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ‘‘AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
+Copyright(C) Caldera International Inc. 2001-2002. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+ Redistributions of source code and documentation must retain the
+ above copyright notice, this list of conditions and the following
+ disclaimer.
+ Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ All advertising materials mentioning features or use of this software
+ must display the following acknowledgement:
+  This product includes software developed or owned by Caldera
+  International, Inc.
+ Neither the name of Caldera International, Inc. nor the names of
+ other contributors may be used to endorse or promote products
+ derived from this software without specific prior written permission.
+
+USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA
+INTERNATIONAL, INC. AND CONTRIBUTORS ‘‘AS IS'' AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE
+LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Sccsid @(#)refer.1b     1.4 (gritter) 12/12/05
+..
+.\" DA M. E. Lesk
+.\" DS Utroff refer manual
+.\" DT Utroff refer manual
+.\" DK utroff refer hunt inv mkey troff nroff heirloom tmac xml
 .
 .
 .
-.TH REFER 1 '2017‐12‐06'
+.TH REFER 1 2018-04-14
 .
 .
 .
 .SH NAME
 .PP
-\fBrefer\fR - (utroff) insert iso‐690 compliant references
+\fBrefer\fR − (utroff) insert iso-690 compliant references
 in document
 .
 .
@@ -86,13 +91,13 @@ in document
 .SH SYNOPSIS
 .PP
 \fB@BINDIR@/refer\fR
-[\fB-abcdeinPS\fR]
-[\fB-f\fR\fIn\fR]
-[\fB-k\fR\fIx\fR]
-[\fB-l\fR\fIm\fR\fB,\fR\fIn\fR]
-[\fB-p\fR \fIbib\fR]
-[\fB-s\fR\fIkeys\fR]
-[\fB-B\fR\fIl\fR\fB.\fR\fIm\fR]
+[\fB−abcdeinPS\fR]
+[\fB−f\fR\fIn\fR]
+[\fB−k\fR\fIx\fR]
+[\fB−l\fR\fIm\fR\fB,\fR\fIn\fR]
+[\fB−p\fR \fIbib\fR]
+[\fB−s\fR\fIkeys\fR]
+[\fB−B\fR\fIl\fR\fB.\fR\fIm\fR]
 [\fIfile\fR ...]
 .
 .
@@ -103,12 +108,12 @@ in document
 for \fInroff\fR and \fItroff\fR that finds and formats
 references for footnotes or endnotes. It is also the base
 for a series of programs designed to index, search, sort,
-and print stand‐alone bibliographies, or other data entered
+and print stand-alone bibliographies, or other data entered
 in the appropriate form.
 .PP
 This version adds to \fIHeirloom refer\fR the ability to sort following
-the \fIiso‐690\fR(7) bibliography standart (\fB‐i\fR
-option), a better capitalize option (\fB‐d\fR), support
+the \fIiso-690\fR(7) bibliography standart (\fB-i\fR
+option), a better capitalize option (\fB-d\fR), support
 editor names like authors names, and insertion of the
 universal "&" instead of the english "and" to join names.
 .PP
@@ -128,33 +133,33 @@ default references are flagged by footnote numbers.
 .PP
 The following options are available:
 .TP
-\&\fB-a\fR \fIn\fR
+\&\fB−a\fR \fIn\fR
 Reverse the first \fIn\fR author or editor names (Jones, J.
 A. instead of J. A. Jones). If \fIn\fR is omitted all author
 and editor names are reversed.
 .TP
-\&\fB-b\fR
+\&\fB−b\fR
 Bare mode: do not put any flags in text (neither numbers nor
 labels).
 .TP
-\&\fB-c\fR \fIkeys\fR
+\&\fB−c\fR \fIkeys\fR
 Capitalize (with Caps Small Caps) the
-whole field whose key‐letters are in the firstname part of
-fields whose key‐letters are in \fIkeys\fR. The firstname
+whole field whose key-letters are in the firstname part of
+fields whose key-letters are in \fIkeys\fR. The firstname
 part is the last word of the fields or the previous one if
 it ends with a comma (",").
 .TP
-\&\fB-d\fR \fIkeys\fR
+\&\fB−d\fR \fIkeys\fR
 Insert strings around the lastname, firstname and junior
-part of fields whose key‐letters are in \fIkeys\fR, for
+part of fields whose key-letters are in \fIkeys\fR, for
 later formatting. The firstname part is the last word of the
 field or the previous one if it ends with a comma (",").
 Strings are
-\Ee*(+F and \Ee*(‐F around firstname,
-\Ee*(+L and \Ee*(‐L around lastname,
-\Ee*(+J and \Ee*(‐J around junior.
+\e*(+F and \e*(-F around firstname,
+\e*(+L and \e*(-L around lastname,
+\e*(+J and \e*(-J around junior.
 .TP
-\&\fB-e\fR
+\&\fB−e\fR
 Instead of leaving the references where encountered,
 accumulate them until a sequence of the form
 .PP
@@ -166,65 +171,65 @@ is encountered, and then write out all references collected
 so far. Collapse references to same source.
 .EE
 .TP
-\&\fB-f\fR \fIn\fR
+\&\fB−f\fR \fIn\fR
 Set the footnote number to \fIn\fR instead of the default of
 1 (one). With labels rather than numbers, this flag is a
-no‐op.
+no-op.
 .TP
-\&\fI-i\fR
-Sort following the iso‐690 standart order of fields: If
+\&\fI−i\fR
+Sort following the iso-690 standart order of fields: If
 \fBJ\fR is defined, the order of fields is "\fBQATESVBJ\fR";
 Else, if \fBB\fR is defined, the order of fields is
 "\fBQATESVB\fR"; Else, the order of fields is
-"\fBQAESVT\fR". The \fIu‐ref\fR macro need this option to
+"\fBQAESVT\fR". The \fIu-ref\fR macro need this option to
 work properly.
 .TP
-\&\fB-k\fR \fIx\fR
+\&\fB−k\fR \fIx\fR
 Instead of numbering references, use labels as specified in
 a reference data line beginning \fI%x\fR; by default \fIx\fR
 is \fBL\fR.
 .TP
-\&\fB-l\fR \fIm , n\fR
+\&\fB−l\fR \fIm , n\fR
 Instead of numbering references, use labels made from the
-senior author’s last name and the year of publication. Only
+senior author's last name and the year of publication. Only
 the first \fIm\fR letters of the last name and the last
 \fIn\fR digits of the date are used. If either \fIm\fR or
 \fIn\fR is omitted the entire name or date respectively is
 used.
 .TP
-\&\fB-n\fR
+\&\fB−n\fR
 Do not search the default file \fB/$REFLIB$/papers/Ind\fR.
 If there is a \fBREFER\fR environment variable, the
 specified file will be searched instead of the default file;
-in this case the \fB-n\fR flag has no effect.
+in this case the \fB−n\fR flag has no effect.
 .TP
-\&\fB-p\fR \fIbib\fR
+\&\fB−p\fR \fIbib\fR
 Take the next argument \fIbib\fR as a file of references to
 be searched. The default file is searched last.
 .TP
-\&\fB-s\fR \fIkeys\fR
-Sort references by fields whose key‐letters are in the
+\&\fB−s\fR \fIkeys\fR
+Sort references by fields whose key-letters are in the
 \fIkeys\fR string; permute reference numbers in text
-accordingly. Implies \fB-e\fR. The key‐letters in
+accordingly. Implies \fB−e\fR. The key-letters in
 \fIkeys\fR may be followed by a number to indicate how many
 such fields are used, with \fB+\fR taken as a very large
 number. The default is \fBAD\fR which sorts on the senior
 author and then date; to sort, for example, on all authors
-and then title, use \fB‐sA+T\fR.
+and then title, use \fB-sA+T\fR.
 .TP
-\&\fB-B\fR \fIl.m\fR
+\&\fB−B\fR \fIl.m\fR
 Bibliography mode. Take a file composed of records
 separated by blank lines, and turn them into \fItroff\fR
 input. Label \fIl\fR will be turned into the macro \fI.m\fR
 with \fIl\fR defaulting to \fB%X\fR and \fI.m\fR defaulting
 to \fB.AP\fR (annotation paragraph).
 .TP
-\&\fB-P\fR
+\&\fB−P\fR
 Place punctuation marks .,:;?! after the reference signal,
 rather than before. (Periods and commas used to be done
 with strings.)
 .TP
-\&\fB-S\fR
+\&\fB−S\fR
 Produce references in the Natural or Social Science format.
 .PP
 To use your own references, put them in the format described
@@ -239,14 +244,14 @@ The \fIrefer\fR preprocessor and associated programs expect
 input from a file of references composed of records
 separated by blank lines. A record is a set of lines
 (fields), each containing one kind of information. Fields
-start on a line beginning with a ’\fB%\fR’, followed by a
-key‐letter, then a blank, and finally the contents of the
+start on a line beginning with a '\fB%\fR', followed by a
+key-letter, then a blank, and finally the contents of the
 field, and continue until the next line starting with
-’\fB%\fR’. The output ordering and formatting of fields
+'\fB%\fR'. The output ordering and formatting of fields
 is controlled by the macros specified for \fInroff/troff\fR
 (for footnotes and endnotes) or \fIroffbib\fR (for
-stand‐alone bibliographies). For a list of the most common
-key‐letters and their corresponding fields, see
+stand-alone bibliographies). For a list of the most common
+key-letters and their corresponding fields, see
 \fIaddbib\fR(1B). An example of a \fIrefer\fR entry is given
 below.
 .
@@ -257,7 +262,7 @@ below.
 .EX
 \fB%A\fR        M.\fB \fRE.\fB \fRLesk
 \fB%T\fR        Some\fB \fRApplications\fB \fRof\fB \fRInverted\fB \fRIndexes\fB \fRon\fB \fRthe\fB \fRUNIX\fB \fRSystem
-\fB%B\fR        UNIX\fB \fRProgrammer’s\fB \fRManual
+\fB%B\fR        UNIX\fB \fRProgrammer's\fB \fRManual
 \fB%V\fR        2b
 \fB%I\fR        Bell\fB \fRLaboratories
 \fB%C\fR        Murray\fB \fRHill,\fB \fRNJ
@@ -275,11 +280,11 @@ below.
 .
 .SH SEE ALSO
 .PP
-\&referformat(7) <referformat.tr>,
-\&sortbib(1) <sortbib.tr>,
-\&mkey(1) <mkey.tr>,
-\&inv(1) <inv.tr>,
-\&hunt(1) <hunt.tr>,
+referformat(7),
+sortbib(1),
+mkey(1),
+inv(1),
+hunt(1),
 and \fISome application of Inverted Indexes in the UNIX
 System\fR by M. E. Lesk.
 .
@@ -296,21 +301,13 @@ Sorting large numbers of references causes a core dump.
 .SH LICENSE
 .PP
 \fIRefer\fR is distributed under the
-\&CDDL‐1.0 <../share/cddl.tr>
-license.
+cddl license.
 This manual page is distributed under the
-\&original BSD <../share/bsd4.tr>
-license.
-.
-.
-.
-.SH BUGS & HELP
-.PP
-Please, send questions, bugs and patches at help at utroff dot org.
+bsd4 license
 .
 .
 .
 .SH AUTHORS
 .PP
-Written by Mike Lesk, modified by Pierre‐Jean
+Written by Mike Lesk, modified by Pierre-Jean
 Fichet.

@@ -1,5 +1,4 @@
-.\" Written by Greg Shenaut & Bill Tuthill.
-.\" Modified by Pierre‐Jean Fichet
+.\"
 .ig
 Copyright (c) 1983 Regents of the University of California.
 All rights reserved.
@@ -20,13 +19,13 @@ are met:
     documentation and/or other materials provided with the distribution.
  3. All advertising materials mentioning features or use of this software
     must display the following acknowedgement:
-	This product includes software developed by the University of
-	California, Berkeley and its contributors.
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
  4. Neither the name of the University nor the names of its contributors
     may be used to endorse or promote products derived from this software
     without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ‘‘AS IS'' AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
 ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
@@ -58,7 +57,7 @@ are met:
     derived from this software without specific prior written permission.
 
 USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA
-INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR
+INTERNATIONAL, INC. AND CONTRIBUTORS ‘‘AS IS'' AND ANY EXPRESS OR
 IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
 ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE
@@ -70,34 +69,37 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-from 4.3BSD-Tahoe sortbib.1	6.1 (Berkeley) 4/29/85
-from Heirloom doctools sortbib.1b	1.4 (gritter) 12/12/05
+from 4.3BSD-Tahoe sortbib.1     6.1 (Berkeley) 4/29/85
+from Heirloom doctools sortbib.1b       1.4 (gritter) 12/12/05
 ..
+.\" DA Written by Greg Shenaut & Bill Tuthill, modified by Pierre-Jean Fichet
+.\" DS Utroff sortbib manual
+.\" DT Utroff sortbib manual
+.\" DK utroff sortbib refer hunt inv mkey troff nroff heirloom tmac xml
 .
 .
 .
-.TH SORTBIB 1 '2017‐12‐06'
+.TH SORTBIB 1 2018-04-14
 .
 .
 .
 .SH NAME
 .PP
-\fBsortbib\fR - Sort refer bibliographic database following
-iso‐690 standart
+\fBsortbib\fR − Sort refer bibliographic database following
+iso-690 standart
 .
 .
 .
 .SH SYNOPSIS
 .PP
-\fIsortbib\fR [\fB-i\fR|\fB-s\fR\fIKEYS\fR] \fIdatabase\fR ...
+\fIsortbib\fR [\fB−i\fR|\fB−s\fR\fIKEYS\fR] \fIdatabase\fR ...
 .
 .
 .
 .SH DESCRIPTION
 .PP
 \fISortbib\fR sorts files of records containing \fIrefer\fR
-key‐letters by user‐specified keys. Records may be separated
+key-letters by user-specified keys. Records may be separated
 by blank lines, or by \fB.[\fR and \fB.]\fR delimiters,
 but the two styles may not be mixed together. This program
 reads through each \fIdatabase\fR and pulls out key fields,
@@ -110,8 +112,8 @@ read standard input.
 By default, \fIsortbib\fR alphabetize the first \fB%A\fR and
 \fB%D\fR fields, which contain the senior author and date.
 .PP
-The \fB‐i\fR option is used to sort database following an
-algorythm which aims to respect the \fIiso‐690\fR
+The \fB-i\fR option is used to sort database following an
+algorythm which aims to respect the \fIiso-690\fR
 bibliography standart:
 .IP \(bu
 If \fBJ\fR is defined, the order of fields is:
@@ -122,25 +124,25 @@ Else, if \fBB\fR is defined, the order of fields is:
 .IP \(bu
 Else, the order of fields is: \fBQA+E+SVT\fR.
 .PP
-The \fB-s\fR option is used to specify new \fIKEYS\fR. For
-instance, \fB-sATD\fR will sort by author, title, and
-date, while \fB-sA+D\fR will sort by all authors, and
+The \fB−s\fR option is used to specify new \fIKEYS\fR. For
+instance, \fB−sATD\fR will sort by author, title, and
+date, while \fB−sA+D\fR will sort by all authors, and
 date. Sort keys past the fourth are not meaningful. No
 more than 16 databases may be sorted together at one time.
 Records longer than 4096 characters will be truncated.
 .PP
 \fISortbib\fR sorts on last word on the \fB%A\fR and
-\fB%E\fR line, which are assumed to be the author’s and
-editor’s last name. A word in the final position, such as
+\fB%E\fR line, which are assumed to be the author's and
+editor's last name. A word in the final position, such as
 "jr." or "ed.", will be ignored if the name beforehand
-ends with a comma. Authors with two‐word last names or
+ends with a comma. Authors with two-word last names or
 unusual constructions can be sorted correctly by using the
-\fInroff\fR convention "\fB\Ee0\fR" in place of a blank.
+\fInroff\fR convention "\fB\e0\fR" in place of a blank.
 A \fB%Q\fR field is considered to be the same as \fB%A\fR,
 except sorting begins with the first, not the last, word.
 \fISortbib\fR sorts on the last word of the \fB%D\fR line,
 usually the year.
-If a sort‐significant field is absent from a record,
+If a sort-significant field is absent from a record,
 \fIsortbib\fR places that record before other records
 containing that field.
 .
@@ -149,10 +151,8 @@ containing that field.
 .SH LICENSE
 .PP
 \fISortbib\fR is distributed under the
-\&CDDL1.0 license <../share/cddl.tr>.
 This manual page is distributed under a
-\&four clause BSD <../share/bsd4.tr>
-License.
+bsd4 license.
 .
 .
 .
@@ -164,18 +164,10 @@ License.
 .
 .SH SEE ALSO
 .PP
-\&refer(1) <refer.tr>,
-\&u‐ref(7) <u‐ref.tr>.
-.
-.
-.
-.SH BUGS & HELP
-.PP
-Please, send questions, bugs and patches at help at utroff dot org.
 .
 .
 .
 .SH AUTHORS
 .PP
 Written by Greg Shenaut & Bill Tuthill. Modified by
-Pierre‐Jean Fichet.
+Pierre-Jean Fichet.
